@@ -51,8 +51,8 @@
 .projects-section {
   display: flex;
   flex: 0 0 60%; /* Reduced from 70% to show more of both sides */
-  min-width: 60%;
-  height: 400px;
+  min-width: 70%;
+  height: flex;
   padding: 25px;
   justify-content: space-between;
   gap: 25px;
