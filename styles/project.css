@@ -1,0 +1,312 @@
+/* Projects Carousel Container */
+.projects-carousel-container {
+  width: 100%;
+  padding: 40px 0;
+  position: relative;
+}
+
+.projects-carousel {
+  position: relative;
+  width: 95%; /* Increased to show more of adjacent tiles */
+  margin: 0 auto;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border-radius: 20px;
+  padding: 20px 0;
+}
+
+/* Fade Effects */
+.projects-carousel::before,
+.projects-carousel::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  width: 150px;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.projects-carousel::before {
+  left: 0;
+}
+
+.projects-carousel::after {
+  right: 0;
+}
+
+/* Scroll Track */
+.projects-track {
+  display: flex;
+  transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  width: 100%;
+  gap: 30px; /* Increased gap for better separation */
+  padding: 0 10%; /* Added padding to center the active slide */
+}
+
+/* Project Section - Further reduced width to show both adjacent tiles */
+.projects-section {
+  display: flex;
+  flex: 0 0 60%; /* Reduced from 70% to show more of both sides */
+  min-width: 60%;
+  height: 400px;
+  padding: 25px;
+  justify-content: space-between;
+  gap: 25px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(15px);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.25);
+  transition: all 0.4s ease;
+  opacity: 0.6; /* More transparent for non-active slides */
+  transform: scale(0.9); /* Smaller adjacent tiles */
+}
+
+/* Center tile - more prominent */
+.projects-section.active {
+  opacity: 1;
+  transform: scale(1);
+  box-shadow: 0 16px 50px rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.projects-section:hover {
+  transform: scale(0.95);
+  box-shadow: 0 8px 35px rgba(0, 0, 0, 0.3);
+}
+
+.projects-section.active:hover {
+  transform: scale(1.02);
+}
+
+/* Left Section (Image/Visual) */
+#proj-left {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 15px;
+  overflow: hidden;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.project-image {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: inherit;
+  text-align: center;
+}
+
+.project-image h3 {
+  font-size: 2rem;
+  font-weight: 600;
+  text-shadow: 0 2px 8px rgba(130, 112, 112, 0.4);
+}
+
+/* Right Section (Content) */
+#proj-right {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-radius: 15px;
+  padding: 25px;
+  color: inherit;
+}
+
+#proj-right h2 {
+  font-size: 1.8rem;
+  margin-bottom: 15px;
+  color: inherit;
+  font-weight: 600;
+}
+
+#proj-right p {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  opacity: 0.9;
+}
+
+/* Project Buttons */
+.project-buttons {
+  display: flex;
+  justify-content: flex-start;
+  gap: 15px;
+}
+
+.project-buttons button {
+  padding: 12px 25px;
+  border: none;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 500;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.project-buttons button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+  background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+}
+
+/* Navigation Buttons */
+.nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.25);
+  border: none;
+  font-size: 28px;
+  color: white;
+  width: 60px;
+  height: 60px;
+  cursor: pointer;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  z-index: 100;
+  pointer-events: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+}
+
+.nav-btn:hover {
+  background: rgba(255, 255, 255, 0.4);
+  transform: translateY(-50%) scale(1.1);
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.4);
+}
+
+.left-btn { 
+  left: 2%; 
+}
+
+.right-btn { 
+  right: 2%; 
+}
+
+/* Carousel Indicators */
+.carousel-indicators {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+  gap: 12px;
+}
+
+.indicator {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+}
+
+.indicator.active {
+  background: inherit;
+  transform: scale(1.3);
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .projects-carousel {
+    width: 95%;
+  }
+  
+  .projects-section {
+    flex: 0 0 65%;
+    min-width: 65%;
+    height: 380px;
+  }
+  
+  .nav-btn {
+    width: 50px;
+    height: 50px;
+    font-size: 24px;
+  }
+}
+
+@media (max-width: 768px) {
+  .projects-carousel {
+    width: 98%;
+  }
+  
+  .projects-section {
+    flex: 0 0 75%;
+    min-width: 75%;
+    flex-direction: column;
+    height: auto;
+    min-height: 500px;
+  }
+  
+  #proj-left {
+    flex: 1;
+    min-height: 200px;
+  }
+  
+  #proj-right {
+    flex: 2;
+  }
+  
+  .project-buttons {
+    justify-content: center;
+  }
+  
+  .nav-btn {
+    width: 45px;
+    height: 45px;
+    font-size: 20px;
+  }
+  
+  .left-btn { 
+    left: 1%; 
+  }
+  
+  .right-btn { 
+    right: 1%; 
+  }
+}
+
+@media (max-width: 480px) {
+  .projects-carousel {
+    width: 100%;
+  }
+  
+  .projects-section {
+    flex: 0 0 85%;
+    min-width: 85%;
+  }
+  
+  #proj-right h2 {
+    font-size: 1.5rem;
+  }
+  
+  .project-buttons {
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .project-buttons button {
+    width: 100%;
+  }
+  
+  .nav-btn {
+    width: 40px;
+    height: 40px;
+    font-size: 18px;
+  }
+}

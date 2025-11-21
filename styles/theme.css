@@ -1,0 +1,36 @@
+/* Center content and text styles */
+.container {
+  text-align: center;
+  color: #333;
+  font-family: Arial, sans-serif;
+  padding-top: 20%;
+}
+
+/* Theme toggle button styling */
+.theme-toggle {
+  position: fixed;              /* Stay in one place even when scrolling */
+  top: 20px;                    /* Distance from the top */
+  right: 20px;                  /* Distance from the right */
+  background: transparent;      /* No background */
+  border: 1px solid black;      /* Light gray border */
+  border-radius: 20px;        /* Rounded corners */
+  font-size: 28px;              /* Large emoji size */
+  cursor: pointer;              /* Pointer cursor */
+  transition: transform 0.2s ease;
+}
+
+/* Subtle hover animation */
+.theme-toggle:hover {
+  transform: scale(1.2);
+}
+
+/* Light mode text */
+.light-mode .container {
+  color: #222;
+  
+}
+
+/* Dark mode text */
+.dark-mode .container {
+  color: #f1f1f1;
+}
