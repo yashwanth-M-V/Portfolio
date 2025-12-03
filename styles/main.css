@@ -26,7 +26,7 @@ body {
 /* Light mode gradient */
 .light-mode {
   background-color: #ffb3b3; /* fallback base color */
-  background: linear-gradient(-45deg, #ffb6c1, #ff9a9e, #fad0c4, #ffb6c1);
+  background: linear-gradient(-45deg, #f6f6f6, #FFFFF0, #FFFDD0, #d4d4d4);
   background-size: 800% 800%;
   color: #000000;
 }
