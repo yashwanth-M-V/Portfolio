@@ -1,30 +1,33 @@
 <div class="projects-carousel-container" id="projects">
   <div class="projects-carousel">
+
     <!-- Left Button -->
     <button class="nav-btn left-btn">&#10094;</button>
 
     <!-- Carousel Track -->
     <div class="projects-track">
-      <!-- Tile 1 -->
-      <div class="glassmorphism-container projects-section">
-        <div id="proj-left">
+
+      <!-- Slide 1 -->
+      <div class="projects-section">
+        <div class="proj-left">
           <div class="project-image">
             <h3>project-image</h3>
           </div>
         </div>
-        <div id="proj-right">
+
+        <div class="proj-right">
           <h2>BritCrime Analytics</h2>
           <p>A Data End to end pipeline and analytics project that tells about the crimes in Britain.</p>
+
           <h3>Key Features</h3>
           <ul>
             <li>Managed to pull the data using API within 3 seconds.</li>
             <li>Handled large datasets of having close to 1.9 million records.</li>
-            <li>Cleaned and preprocessed the data using Python libraries like Pandas and NumPy.</li>
-            <li>Stored the processed data in Azure Blob Storage for scalable and secure access</li>
-            <li>Performed exploratory data analysis (EDA) to identify crime patterns, trends, and correlations using visualization libraries like Matplotlib and Seaborn.</li>
-            <li>Created interactive dashboards and visualizations using Power BI to present insights to stakeholders.</li>
+            <li>Cleaned and preprocessed the data using Pandas & NumPy.</li>
+            <li>Stored processed data in Azure Blob Storage.</li>
+            <li>Performed EDA & visualized crime trends using Matplotlib.</li>
+            <li>Built dashboards in Power BI.</li>
           </ul>
-            
 
           <div class="project-buttons">
             <button>GitHub</button>
@@ -33,23 +36,26 @@
         </div>
       </div>
 
-      <!-- Tile 2 -->
-      <div class="glassmorphism-container projects-section">
-        <div id="proj-left">
+      <!-- Slide 2 -->
+      <div class="projects-section">
+        <div class="proj-left">
           <div class="project-image">
             <h3>project-image</h3>
           </div>
         </div>
-        <div id="proj-right">
+
+        <div class="proj-right">
           <h2>F1 Car Racing Analysis 2024</h2>
-          <p>A Full End to End Data Engineer and modelling project focused on Formula 1 racing data.</p>
+          <p>A Full End to End Data Engineer and analytics project focused on Formula 1 racing data.</p>
+
           <h3>Key Features</h3>
           <ul>
-            <li>Extracted data using DAGs with filtering only 2024 year data.</li>
-            <li>Using Airflow and other orchestration tools for workflow management.</li>
-            <li>Created a star schema layering for efficient data organization and querying.</li>
-            <li>Performed exploratory data analysis (EDA) to identify racing patterns, trends, and correlations using visualization libraries like Matplotlib and Seaborn.</li>
+            <li>Extracted 2024 race data using Airflow DAGs.</li>
+            <li>Star-schema modelling.</li>
+            <li>Workflow orchestration with Airflow.</li>
+            <li>Visual analysis using Python + Seaborn.</li>
           </ul>
+
           <div class="project-buttons">
             <button>GitHub</button>
             <button>Live Demo</button>
@@ -57,23 +63,26 @@
         </div>
       </div>
 
-      <!-- Tile 3 -->
-      <div class="glassmorphism-container projects-section">
-        <div id="proj-left">
+      <!-- Slide 3 -->
+      <div class="projects-section">
+        <div class="proj-left">
           <div class="project-image">
             <h3>project-image</h3>
           </div>
         </div>
-        <div id="proj-right">
-          <h2>Youtube Sentimental Analysis</h2>
-          <p>An end to end project analyzing sentiments from YouTube comments using natural language processing techniques.</p>
+
+        <div class="proj-right">
+          <h2>YouTube Sentiment Analysis</h2>
+          <p>Full end-to-end project analyzing YouTube comment sentiments using NLP.</p>
+
           <h3>Key Features</h3>
           <ul>
-            <li>Extracted YouTube comments using YouTube Data API.</li>
-            <li>Cleaned and preprocessed the comments using Python libraries like Pandas and NLTK.</li>
-            <li>Performed sentiment analysis using machine learning algorithms to classify comments as positive, negative, or neutral.</li>
-            <li>Visualized sentiment trends and patterns using libraries like Matplotlib and Seaborn.</li>
+            <li>YouTube API comment extraction.</li>
+            <li>NLTK & Pandas cleaning.</li>
+            <li>Sentiment classification.</li>
+            <li>Trend visualization.</li>
           </ul>
+
           <div class="project-buttons">
             <button>GitHub</button>
             <button>Live Demo</button>
@@ -81,12 +90,7 @@
         </div>
       </div>
 
-      <!-- Tile 4 -->
-      
     </div>
-
-
-    
 
     <!-- Right Button -->
     <button class="nav-btn right-btn">&#10095;</button>
@@ -97,8 +101,6 @@
     <span class="indicator active" data-index="0"></span>
     <span class="indicator" data-index="1"></span>
     <span class="indicator" data-index="2"></span>
-    <span class="indicator" data-index="3"></span>
   </div>
 </div>
 
-<script src="js/projects.js"></script>

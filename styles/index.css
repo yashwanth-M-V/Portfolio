@@ -1,0 +1,86 @@
+
+.side {
+  position: fixed;
+  top: 80%;                      /* center the whole stack vertically */
+  transform: translateY(-50%);
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Left and right positions */
+.side.left {
+  left: 40px;
+}
+
+.side.right {
+  right: 40px;
+  /* small offset to visually align the line start with the left side */
+  transform: translateY(calc(-50% + 4px));  /* tweak +4 to +6 if needed */
+}
+
+/* Vertical line */
+.side::after {
+  content: "";
+  display: block;
+  width: 1px;
+  height: 90px;                  /* line length – same on both sides */
+  margin-top: 16px;              /* space between icons/email and the line */
+  background-color: currentColor;/* auto matches text color (works with themes) */
+}
+
+/* Base icon styling */
+.side.left img {
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
+  display: block;
+  transition: transform 0.25s ease, filter 0.25s ease;
+  filter: opacity(0.75);
+}
+
+/* Hover effect */
+.side.left a:hover img {
+  transform: translateY(-4px);    /* icon moves up */
+  filter: opacity(1) drop-shadow(0 0 4px #64ffda);
+}
+
+/* Social list */
+.side.left ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.side.left li + li {
+  margin-top: 12px;
+}
+
+/* Links style */
+.side a {
+  color: inherit;
+  text-decoration: none;
+  font-size: 14px;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.side a:hover {
+  color: #c57dff;  /* light purple */
+  transform: translateY(-3px);
+}
+
+/* Vertical email text */
+.side.right a {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);     /* flip so it reads bottom-to-top */
+  display: inline-block;
+  letter-spacing: 0.12em;
+}
+
+/* Optional: hide sidebars on small screens */
+@media (max-width: 768px) {
+  .side {
+    display: none;
+  }
+}
