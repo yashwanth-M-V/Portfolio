@@ -1,1 +1,6 @@
-this is my personal webite that showcases my talent and resume
+
+# Personal Website
+
+this is my personal website that showcases my talent and resume.
+
+This is purely built with HTML and CSS
