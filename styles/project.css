@@ -89,7 +89,7 @@
   align-items: center;
   border-radius: 15px;
   overflow: hidden;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: grey;
 }
 
 .project-image {
@@ -121,7 +121,7 @@
 
 #proj-right h2 {
   font-size: 1.8rem;
-  margin-bottom: 15px;
+  margin: 2px;
   color: inherit;
   font-weight: 600;
 }
@@ -129,7 +129,15 @@
 #proj-right p {
   font-size: 1rem;
   line-height: 1.6;
-  margin-bottom: 20px;
+  margin: 2px;
+  opacity: 0.9;
+}
+#proj-right ul {
+  margin: 2px 2px 2px 2px;
+  padding: 0;
+  list-style-type: disc;
+  font-size: 1rem;
+  line-height: 1.5;
   opacity: 0.9;
 }
 
@@ -307,4 +315,25 @@
     height: 40px;
     font-size: 18px;
   }
+}
+
+
+
+.project-btn {
+  padding: 12px 25px;
+  border-radius: 8px;
+  border: inherit 2px solid;
+  cursor: pointer;
+  color: inherit;
+  transition: all 0.3s ease;
+  font-weight: 500;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  text-decoration: none;
+  display: inline-block;
+}
+.project-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+  background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+  color: white;
 }
