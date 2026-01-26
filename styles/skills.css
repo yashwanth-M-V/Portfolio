@@ -1,0 +1,142 @@
+/* --- Skills Section Layout --- */
+.skills-section {
+  display: flex;
+  background-color: rgba(255, 255, 255, 0.1); /* Optional styling */
+  flex-direction: column;
+  height: 50vh;
+  padding: 20px;
+  gap: 10px;
+  background: transparent;
+}
+
+/* --- Top Section --- */
+#skills-top {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 30px;
+}
+
+#skills-top h2 {
+  font-size: 2rem;
+  margin-bottom: 15px;
+  color: inherit;
+}
+
+/* --- Category Buttons --- */
+.skills-buttons {
+  display: flex;
+  gap: 15px;
+}
+
+.skill-btn {
+  background: transparent;
+  border: 2px solid currentColor;
+  border-radius: 8px;
+  padding: 10px 20px;
+  color: inherit;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 1rem;
+}
+
+.skill-btn:hover {
+  box-shadow: 0 0 10px rgba(200, 0, 255, 0.6);
+  border-color: rgb(200, 0, 255);
+}
+
+.skill-btn.active {
+  background-color: rgba(200, 0, 255, 0.6);
+  box-shadow: 0 0 20px rgba(200, 0, 255, 0.8);
+  border-color: rgb(200, 0, 255);
+}
+
+/* --- Middle Section --- */
+#skills-middle {
+  flex: 3;
+  display: flex;
+  gap: 20px;
+}
+
+/* --- Left Skill List --- */
+.skills-left {
+  flex: 1;
+  background-color: rgba(255, 255, 255, 0.1); /* Optional styling */
+  border-radius: 10px;
+  padding: 20px;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 10px;
+}
+
+/* Individual Skill Buttons */
+.skill-item {
+  background: transparent;
+  border: none;
+  color: inherit;
+  text-align: left;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: color 0.3s ease, font-weight 0.3s ease;
+}
+
+.skill-item:hover {
+  color: rgb(200, 0, 255);
+}
+
+.skill-item.active {
+  color: rgb(200, 0, 255);
+  font-weight: bold;
+}
+
+/* --- Right Placeholder --- */
+.skills-right {
+  background-color: rgba(255, 255, 255, 0.1); /* Optional styling */
+  border-radius: 10px;
+  flex: 1;
+  display: flex;
+  justify-content: center; /* center horizontally */
+  align-items: center;     /* center vertically */
+}
+
+/* Container for image or black circle */
+.skills-right .icon-container {
+  width: 150px;     /* adjust size as needed */
+  height: 150px;    /* same width and height for square container */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Image styling */
+.skills-right img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+/* --- Bottom Section --- */
+#skills-bottom {
+  background-color: rgba(255, 255, 255, 0.1); /* Optional styling */
+  border-radius: 10px;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-family: 'Macondo', cursive;
+}
+
+#skills-bottom p {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: bold;
+  color: inherit;
+  padding: 10px 20px;
+}
+

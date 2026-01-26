@@ -1,0 +1,351 @@
+/* --- Experience Section --- */
+.experience-section {
+  display: flex;
+  flex-direction: column;
+  min-height: 60vh;
+  height: auto;
+  padding: 20px;
+  gap: 10px;
+}
+
+/* --- Top Section (1/5 height) --- */
+#exp-top {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  padding-left: 20px;
+}
+
+#exp-top h2 {
+  margin: 0;
+  color: inherit;
+  font-size: 2rem;
+}
+
+/* --- Bottom Section (4/5 height) --- */
+#exp-bottom {
+  flex: 4;
+  display: flex;
+  gap: 20px;
+}
+
+/* --- Bottom Left (1/3 width) --- */
+#exp-left {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  background-color: rgba(255,255,255,0.1);
+  padding: 15px;
+}
+
+/* Split exp-left into top and bottom */
+#exp-left-top {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 0;
+}
+
+.timeline-title {
+  color: inherit;
+  font-size: 1.3rem;
+  text-align: center;
+  margin: 0;
+}
+
+#exp-left-bottom {
+  flex: 5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 15px 0;
+}
+
+/* --- Bottom Right (2/3 width) --- */
+#exp-right {
+  flex: 2;
+  border-radius: 10px;
+  background-color: rgba(255,255,255,0.1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.experience-content {
+  color: inherit;
+  text-align: center;
+  max-width: 90%;
+}
+
+.experience-content h3 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.experience-content p {
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+/* ===== Timeline Styles ===== */
+.timeline-container {
+  position: relative;
+  height: 300px;
+  width: 150px; /* Increased width to accommodate both markers and slider */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.slider-wrapper {
+  position: relative;
+  height: 100%;
+  width: 40px;
+  display: flex;
+  justify-content: center;
+  z-index: 10;
+  margin-left: 60px; /* Push slider to the right to make space for markers */
+}
+
+/* Vertical slider styling */
+#timeline {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 300px;
+  height: 8px;
+  background: #d3d3d3;
+  border-radius: 4px;
+  outline: none;
+  transform: rotate(-90deg);
+  transform-origin: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -4px;
+  margin-left: -150px;
+  z-index: 20;
+  cursor: pointer;
+}
+
+/* Track styling for WebKit browsers */
+#timeline::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 8px;
+  background: linear-gradient(to right, #007bff 0%, #d3d3d3 0%);
+  border-radius: 4px;
+  border: none;
+}
+
+#timeline::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #007bff;
+  cursor: pointer;
+  border: 2px solid white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  margin-top: -6px;
+  z-index: 30;
+  position: relative;
+}
+
+/* Track styling for Firefox */
+#timeline::-moz-range-track {
+  width: 100%;
+  height: 8px;
+  background: linear-gradient(to right, #007bff 0%, #d3d3d3 0%);
+  border-radius: 4px;
+  border: none;
+}
+
+#timeline::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #007bff;
+  cursor: pointer;
+  border: 2px solid white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  z-index: 30;
+  position: relative;
+}
+
+/* Tooltip */
+.tooltip {
+  position: absolute;
+  left: 110px; /* Moved further right to align with new slider position */
+  background: #007bff;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 500;
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  z-index: 40;
+  pointer-events: none;
+  transform: translateY(-50%);
+}
+
+.tooltip::after {
+  content: "";
+  position: absolute;
+  left: -5px;
+  top: 50%;
+  transform: translateY(-50%);
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent #007bff transparent transparent;
+}
+
+.tooltip.show {
+  opacity: 1;
+}
+
+/* Date markers - Completely redesigned layout */
+.timeline-markers {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 60px; /* Fixed width for markers column */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  pointer-events: none;
+  z-index: 5;
+}
+
+.marker {
+  display: flex;
+  align-items: center;
+  height: 25px;
+  color: inherit;
+  font-size: 11px;
+  padding: 0 5px;
+  justify-content: flex-end; /* Align text to the right */
+  text-align: right;
+}
+
+.marker::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  position: absolute;
+  right: -15px; /* Position dots to the right of text */
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* Specific marker positions - keep the order */
+.marker.today {
+  order: 1;
+}
+
+.marker.year-2023 {
+  order: 2;
+}
+
+.marker.year-2022 {
+  order: 3;
+}
+
+.marker.start {
+  order: 4;
+}
+
+/* Experience Date Range */
+#experience-date-range {
+  font-size: 1rem;
+  color: inherit;
+  margin-bottom: 15px;
+  font-style: italic;
+}
+
+/* Responsive Design */
+@media (max-width: 900px) {
+  #exp-bottom {
+    flex-direction: column;
+  }
+  
+  .experience-section {
+    min-height: auto;
+  }
+  
+  .timeline-container {
+    height: 200px;
+    width: 130px;
+  }
+  
+  #timeline {
+    width: 200px;
+    margin-left: -100px;
+  }
+  
+  .slider-wrapper {
+    margin-left: 50px;
+  }
+  
+  .tooltip {
+    left: 90px;
+  }
+  
+  .timeline-markers {
+    width: 50px;
+  }
+  
+  .marker::before {
+    right: -12px;
+  }
+}
+
+@media (max-width: 600px) {
+  .experience-section {
+    padding: 15px;
+  }
+  
+  #exp-top h2 {
+    font-size: 1.7rem;
+  }
+  
+  .timeline-title {
+    font-size: 1.1rem;
+  }
+  
+  .experience-content h3 {
+    font-size: 1.3rem;
+  }
+  
+  .timeline-container {
+    width: 120px;
+  }
+  
+  .tooltip {
+    left: 80px;
+  }
+  
+  .slider-wrapper {
+    margin-left: 45px;
+  }
+  
+  .timeline-markers {
+    width: 45px;
+  }
+  
+  .marker {
+    font-size: 10px;
+  }
+  
+  .marker::before {
+    right: -10px;
+  }
+}

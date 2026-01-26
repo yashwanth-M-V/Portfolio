@@ -1,0 +1,16 @@
+.glassmorphism-container {
+    top: 20px;
+    background-color: rgba(255, 255, 255, 0.2); /* Semi-transparent background */
+    border-radius: 15px;                  /* Rounded corners */
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    backdrop-filter: blur(10px);          /* Blur effect */
+    -webkit-backdrop-filter: blur(10px);  /* Safari support */
+    border: 1px solid rgba(255, 255, 255, 0.3); /* Light border */
+    padding: 20px;                        /* Inner padding */
+    max-width: 60%;                     /* Max width */
+    margin: auto;                         /* Center horizontally */
+    padding: 10px 20px;                     /* Vertical and horizontal padding */
+    margin: 40px auto;                     /* Center horizontally with vertical margin */
+    }
+
+

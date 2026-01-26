@@ -1,0 +1,119 @@
+/* Layout for the about section */
+
+  @import url('https://fonts.googleapis.com/css2?family=Grenze+Gotisch:wght@100..900&display=swap');
+
+.about-section {
+  display: flex;                /* Put left and right side by side */
+  justify-content: space-between;
+  align-items: center;          /* Vertically align content */
+  gap: 20px;                    /* Small gap between columns */
+  padding: 20px;
+}
+
+/* Left section (70%) */
+#about-left {
+  flex: 70%;                    /* Take up 70% of available space */
+  background-color: rgba(255, 255, 255, 0.1); /* Optional styling */
+  border-radius: 30px;
+  padding: 10px;
+  text-align: left;
+
+}
+
+#about-left p {
+  flex: 70%;                    /* Take up 70% of available space */
+  border-radius: 10px;
+  padding: 10px 10px;
+  text-align: left;
+
+}
+
+/* Right section (30%) */
+#about-right {
+  flex: 30%;                    /* Take up 30% of available space */
+  /* background-color: rgba(255, 255, 255, 0.15);  Optional styling */
+  border-radius: 10px;
+  padding: 20px;
+  text-align: center;
+}
+
+/* Make layout responsive for mobile */
+@media (max-width: 768px) {
+  .about-section {
+    flex-direction: column;   /* Stack vertically on smaller screens */
+  }
+
+  #about-left,
+  #about-right {
+    flex: 100%;
+  }
+}
+
+/* ----------------------------
+   About Section button styles
+----------------------------- */
+
+.about-buttons {
+  display: flex;
+  gap: 15px;
+  margin-top: 15px;
+}
+
+/* Shared button style */
+.about-btn {
+  background-color: transparent;
+  color: inherit;
+  border: 2px solid currentColor;
+  border-radius: 15px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  cursor: pointer;
+  text-decoration: none; /* removes underline for <a> */
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Hover effect */
+.about-btn:hover {
+  color: #c57dff;
+  border-color: #c57dff;
+  background-color: rgba(197, 125, 255, 0.15);
+  transform: translateY(-2px);
+}
+
+/* Optional: add slight shadow */
+.about-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 0 0 transparent;
+}
+
+
+/* ----------------------------
+   About Section Image Flip Animation
+----------------------------- */
+
+#about-right img {
+  width: 100%;
+  max-width: 250px;
+  border-radius: 10px;
+  transition: transform 0.6s ease, opacity 0.4s ease;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+}
+
+.flip-animation {
+  transform: rotateY(180deg);
+  opacity: 0;
+}
+
+
+
+.download-gif {
+  width: 15px;        /* Adjust size */
+  height: 15px;
+  margin-left: 8px;   /* Space between text and gif */
+  vertical-align: middle;
+  pointer-events: none; /* prevents click interference */
+}

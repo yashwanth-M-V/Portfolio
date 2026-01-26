@@ -1,0 +1,15 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+env/
+venv/
+*.env
+chatbot-website/.env
+
+# macOS
+.DS_Store
+
+# Data / embeddings
+chatbot-website/embeddings.npz

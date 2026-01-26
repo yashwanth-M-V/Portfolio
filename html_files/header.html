@@ -1,0 +1,25 @@
+<!-- header.html -->
+<header class="header-container glassmorphism-container">
+  <div class="header-left">
+    <img id="profile-pic" src="assets/header_pics/profile_pic_1.png"
+         alt="Profile Picture" class="profile-pic clickable-pic">
+  </div>
+
+  <div class="header-right">
+    <nav class="nav-links">
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#education">Education</a>
+      <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact Me</a>
+    </nav>
+  </div>
+</header>
+
+<script src="header.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    window.initProfilePicture();
+  });
+</script>

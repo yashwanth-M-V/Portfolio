@@ -1,0 +1,56 @@
+/* --- Beyond Work Section --- */
+.beyond-section {
+  text-align: center;
+  padding-bottom:  20px;
+}
+
+.beyond-section h2 {
+  color: inherit;
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+/* Container for hobbies */
+.beyond-container {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 30px;
+  border-radius: 20px;
+}
+
+/* Each hobby item */
+.beyond-item {
+  flex: 1;
+  min-width: 180px;
+  max-width: 220px;
+  text-align: center;
+  color: inherit;
+  margin: 10px;
+}
+
+
+/* Make icons bigger and visually balanced */
+.beyond-item::first-line {
+  font-size: 3rem; /* Increase emoji/icon size */
+  line-height: 1.5;
+}
+
+.beyond-item h3 {
+  margin: 10px 0 5px 0;
+  font-size: 1.1rem;
+  color:inherit;
+}
+
+.beyond-item p {
+  font-size: 1rem;
+  color: inherit;
+  margin: 0;
+}
+
+/* Hover effect */
+.beyond-item:hover {
+  transform: translateY(-5px);
+  transition: all 0.3s ease;
+}

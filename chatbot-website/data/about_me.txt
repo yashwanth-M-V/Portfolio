@@ -1,0 +1,114 @@
+Q: What is Yashwanth’s full name?
+A: Yashwanth Madyala Venkata
+
+Q: Where is Yashwanth currently located?
+A: Manchester, United Kingdom
+
+Q: What is Yashwanth’s phone number?
+A: +44 77062228928
+
+Q: What is Yashwanth’s email address?
+A: madyalayashwanth@gmail.com
+
+Q: Tell me about your background
+A: Yashwanth Madyala Venkata is a Data Science graduate based in Manchester, UK. He holds an MSc in Data Science and Big Data Analytics from Wrexham University and has hands-on experience in data engineering, analytics, and building LLM-based RAG systems. He has worked with tools such as Python, SQL, Snowflake, Power BI, AWS, and Azure, and has industry exposure through roles at LatentView Analytics and JCTEK Limited.
+
+
+Q: Can you provide Yashwanth’s LinkedIn profile link?
+A: www.linkedin.com/in/yashwanthmadyala
+
+Q: Does Yashwanth have the right to work in the UK?
+A: Yes, he has a valid right to work in the UK and is open to relocation.
+
+Q: Where did Yashwanth complete his Master’s degree?
+A: Wrexham University, Wrexham, UK
+
+Q: What was Yashwanth’s Master’s program?
+A: MSc Data Science and Big Data Analytics
+
+Q: What was Yashwanth’s dissertation about?
+A: Developed an LLM-based RAG chatbot to enhance real-time query resolution.
+
+Q: Where did Yashwanth complete his Bachelor’s degree?
+A: Jaya Prakash Narayan College of Engineering, India
+
+Q: What was the focus of Yashwanth’s final semester project in B.Tech?
+A: Designed and built an Automated Shutter Opener system with a 4-member team.
+
+Q: Where did Yashwanth complete his diploma in Mechanical Engineering?
+A: Jawaharlal Nehru Govt. Polytechnic, Ramanthapur
+
+Q: What high school did Yashwanth attend?
+A: Chanakya High School
+
+Q: What programming languages does Yashwanth know?
+A: Python and R
+
+Q: Which databases and data platforms is Yashwanth experienced with?
+A: SQL, MySQL, Snowflake
+
+Q: What tools does Yashwanth use for data visualization and BI?
+A: Power BI, Tableau, Excel
+
+Q: What cloud platforms has Yashwanth worked with?
+A: AWS and Azure
+
+Q: Which soft skills does Yashwanth have?
+A: Data storytelling, stakeholder engagement, problem-solving, team collaboration, time management
+
+Q: What productivity and collaboration tools does Yashwanth use?
+A: Notion, HubSpot, Slack, Discord, Office 365
+
+Q: Does Yashwanth have experience with LLMs and RAG systems?
+A: Yes, he has built LLM-based chatbots and integrated RAG pipelines with SQL databases.
+
+Q: What certifications has Yashwanth completed?
+A: Introduction to MS Excel, Build Your Own GPTs, Introduction to Data Analytics, Full-Stack Data Science Bootcamp, Data Visualisation
+
+Q: What is Yashwanth’s role at JCTEK Limited?
+A: Intern, responsible for building a responsive UI integrated with MySQL backend and creating a promotional video.
+
+Q: Where did Yashwanth work as a Data Engineer?
+A: LatentView Analytics, Chennai, India
+
+Q: What experience did Yashwanth gain at LatentView Analytics?
+A: Hands-on experience with Snowflake Data Lake and cloud-based data engineering activities.
+
+Q: Has Yashwanth worked as a Student Ambassador or researcher?
+A: Yes, at Wrexham University, extracting and processing academic abstracts and generating research project titles.
+
+Q: What are some of the projects Yashwanth has worked on?
+A: UK Crime Data Analytics Dashboard, Restaurant Management SQL System, YouTube Comment Sentiment Analysis
+
+Q: Can you describe the UK Crime Data Analytics Dashboard project?
+A: Built an automated ETL pipeline to process 1M+ records, developed Power BI dashboards, and reduced reporting time by ~80%.
+
+Q: What is the Restaurant Management SQL System project about?
+A: Designed a normalized SQL database with CRUD operations to manage menu, orders, and billing efficiently.
+
+Q: Can you describe the YouTube Comment Sentiment Analysis project?
+A: Extracted 5K+ comments via YouTube API, applied NLP techniques for sentiment classification, and built a Streamlit dashboard.
+
+Q: How much did Yashwanth improve reporting efficiency in his projects?
+A: Up to 80% improvement in manual reporting time.
+
+Q: What response time reduction was achieved in his RAG chatbot dissertation?
+A: Reduced response time by 2–3 milliseconds with 90% query accuracy.
+
+Q: What languages can Yashwanth speak?
+A: English (Professional Working), Telugu (Native), Hindi (Elementary)
+
+Q: What is Yashwanth’s career goal?
+A: To work on impactful AI/ML products, contribute to innovative teams, and grow as a builder in data and AI.
+
+Q: Is Yashwanth open to relocation?
+A: Yes, he is open to relocation for full-time roles with sponsorship in the UK.
+
+Q: What type of roles is Yashwanth currently looking for?
+A: Data Analyst or Data Engineer roles with sponsorship availability.
+
+Q: Why is Yashwanth interested in data science and AI?
+A: He believes data explains the "why" behind real-world problems and enjoys building practical solutions with AI.
+
+Q: What makes Yashwanth different from other candidates in AI/ML?
+A: He has built real systems and pipelines, not just tutorial projects or certificates.
