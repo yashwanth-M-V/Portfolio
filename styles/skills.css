@@ -3,7 +3,6 @@
   display: flex;
   background-color: rgba(255, 255, 255, 0.1); /* Optional styling */
   flex-direction: column;
-  height: 50vh;
   padding: 20px;
   gap: 10px;
   background: transparent;
@@ -29,6 +28,10 @@
 .skills-buttons {
   display: flex;
   gap: 15px;
+  flex-wrap: wrap;        /* 👈 allows buttons to go to next line */
+  justify-content: center;/* 👈 keeps them centered inside glass box */
+  max-width: 600px;
+
 }
 
 .skill-btn {

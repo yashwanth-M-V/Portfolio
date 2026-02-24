@@ -1,0 +1,88 @@
+/* ================================
+   MODERN NORMALIZE FOR PORTFOLIO
+   ================================ */
+
+/* 1. Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* 2. Remove default margins */
+body,
+h1, h2, h3, h4, h5, h6,
+p,
+figure,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+/* 3. Smooth scrolling (nice for portfolio navigation) */
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+/* 4. Set core body defaults */
+body {
+  min-height: 100vh;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+}
+
+/* 5. Remove list styles where used for layout */
+ul[role="list"],
+ol[role="list"] {
+  list-style: none;
+  padding: 0;
+}
+
+/* 6. Reset default ul/ol padding */
+ul, ol {
+  padding-left: 0;
+}
+
+/* 7. Make images easier to work with */
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+/* 8. Inherit fonts for form controls */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* 9. Remove default button styles */
+button {
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+/* 10. Improve link styling behavior */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* 11. Remove animations for users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
