@@ -1,16 +1,22 @@
 .glassmorphism-container {
     top: 20px;
-    background-color: rgba(255, 255, 255, 0.2); /* Semi-transparent background */
-    border-radius: 15px;                  /* Rounded corners */
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-    backdrop-filter: blur(10px);          /* Blur effect */
-    -webkit-backdrop-filter: blur(10px);  /* Safari support */
-    border: 1px solid rgba(255, 255, 255, 0.3); /* Light border */
-    padding: 20px;                        /* Inner padding */
-    max-width: 60%;                     /* Max width */
-    margin: auto;                         /* Center horizontally */
-    padding: 10px 20px;                     /* Vertical and horizontal padding */
-    margin: 40px auto;                     /* Center horizontally with vertical margin */
-    }
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 15px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    max-width: 60%;           /* Desktop: contained width */
+    margin: 40px auto;
+    padding: 10px 20px;
+}
 
-
+/* ── Mobile: let it breathe ── */
+@media (max-width: 768px) {
+  .glassmorphism-container {
+    max-width: 90%;           /* Near full width on mobile */
+    margin: 20px auto;
+    padding: 15px;
+    border-radius: 12px;
+  }
+}

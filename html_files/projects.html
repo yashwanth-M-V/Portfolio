@@ -1,12 +1,13 @@
 <div class="projects-carousel-container">
-  <div class="projects-carousel">
-    <!-- Left Button -->
-    <button class="nav-btn left-btn">&#10094;</button>
+  <div class="projects-carousel" id="projects-carousel">
+    <!-- Left Arrow -->
+    <button class="nav-btn left-btn" aria-label="Previous project">&#10094;</button>
 
     <!-- Carousel Track -->
-    <div class="projects-track">
+    <div class="projects-track" id="projects-track">
+
       <!-- Tile 1 -->
-      <div class="glassmorphism-container projects-section">
+      <div class="glassmorphism-container projects-section active">
         <div id="proj-left">
           <div class="project-image">
             <h3>E-Commerce Platform</h3>
@@ -72,22 +73,28 @@
           </div>
         </div>
       </div>
+
     </div>
 
-
-    
-
-    <!-- Right Button -->
-    <button class="nav-btn right-btn">&#10095;</button>
+    <!-- Right Arrow -->
+    <button class="nav-btn right-btn" aria-label="Next project">&#10095;</button>
   </div>
 
-  <!-- Carousel Indicators -->
+  <!-- Dot indicators -->
   <div class="carousel-indicators">
     <span class="indicator active" data-index="0"></span>
     <span class="indicator" data-index="1"></span>
     <span class="indicator" data-index="2"></span>
     <span class="indicator" data-index="3"></span>
   </div>
+
+  <!-- Pause / Resume button -->
+  <div class="carousel-controls">
+    <button class="pause-btn" id="carousel-pause-btn" aria-label="Pause carousel">
+      <span class="pause-icon">⏸</span>
+      <span class="pause-label">Pause</span>
+    </button>
+  </div>
 </div>
 
-<script src="js/projects.js"></script>
+<script src="scripts/projects.js"></script>

@@ -1,3 +1,6 @@
+/* ══════════════════════════════
+   EDUCATION SECTION
+══════════════════════════════ */
 .education-section {
   text-align: center;
   padding: 30px 20px;
@@ -9,7 +12,6 @@
   margin-bottom: 20px;
 }
 
-/* Container holding two cards */
 .education-container {
   display: flex;
   justify-content: center;
@@ -18,10 +20,10 @@
   flex-wrap: wrap;
 }
 
-/* Each card inherits glass effect */
+/* ── Card ── */
 .edu-card {
   flex: 1;
-  min-width: 320px;
+  min-width: 280px;
   max-width: 600px;
   padding: 40px;
   border-radius: 20px;
@@ -30,17 +32,21 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  transition: transform 0.3s ease;
 }
 
-/* Header with year + title */
+.edu-card:hover {
+  transform: translateY(-5px);
+}
+
+/* ── Header: year badge + title ── */
 .edu-header {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 15px;
   margin-bottom: 15px;
 }
 
-/* Year badge */
 .edu-year {
   background: rgba(0, 0, 0, 0.8);
   color: white;
@@ -50,39 +56,67 @@
   padding: 10px 18px;
   font-size: 0.9rem;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  flex-shrink: 0;
 }
 
-/* Title area */
 .edu-title h3 {
   margin: 0;
   font-size: 1.2rem;
-  color: #060303;
+  color: inherit;
 }
 
 .edu-title p {
-  margin: 3px 0 0 0;
-  font-size: 1.5 rem;
+  margin: 3px 0 0;
+  font-size: 1rem;
   color: inherit;
 }
 
 .edu-summary {
-  font-size: 1.5rem;
+  font-size: 1.1rem;
   color: inherit;
-  margin-bottom: 10px;
+  margin: 10px 0;
 }
 
 .edu-card ul {
   padding-left: 20px;
   margin: 0;
-  font-size: 1.2rem;
+  font-size: 1rem;
 }
 
 .edu-card li {
-  margin-bottom: 5px;
+  margin-bottom: 6px;
+  line-height: 1.5;
 }
 
-/* Hover interaction */
-.edu-card:hover {
-  transform: translateY(-5px);
-  transition: all 0.3s ease;
+/* ════════════════════
+   TABLET  (≤ 768px)
+════════════════════ */
+@media (max-width: 768px) {
+  .education-section h2 { font-size: 2rem; }
+  .edu-card { padding: 25px; min-width: 260px; }
+  .edu-summary { font-size: 1rem; }
+  .edu-card ul { font-size: 0.95rem; }
+}
+
+/* ════════════════════
+   MOBILE  (≤ 480px)
+════════════════════ */
+@media (max-width: 480px) {
+  .education-section { padding: 20px 10px; }
+  .education-section h2 { font-size: 1.7rem; }
+  .education-container { gap: 20px; }
+
+  .edu-card {
+    padding: 20px;
+    min-width: unset;
+    width: 100%;
+  }
+
+  .edu-header {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .edu-year     { align-self: flex-start; }
+  .edu-title h3 { font-size: 1.05rem; }
 }

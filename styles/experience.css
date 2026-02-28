@@ -8,7 +8,7 @@
   gap: 10px;
 }
 
-/* --- Top Section (1/5 height) --- */
+/* --- Top Section --- */
 #exp-top {
   flex: 1;
   display: flex;
@@ -22,14 +22,14 @@
   font-size: 2rem;
 }
 
-/* --- Bottom Section (4/5 height) --- */
+/* --- Bottom Section --- */
 #exp-bottom {
   flex: 4;
   display: flex;
   gap: 20px;
 }
 
-/* --- Bottom Left (1/3 width) --- */
+/* --- Left Panel (1/3) --- */
 #exp-left {
   flex: 1;
   display: flex;
@@ -39,7 +39,6 @@
   padding: 15px;
 }
 
-/* Split exp-left into top and bottom */
 #exp-left-top {
   flex: 1;
   display: flex;
@@ -63,7 +62,7 @@
   padding: 15px 0;
 }
 
-/* --- Bottom Right (2/3 width) --- */
+/* --- Right Panel (2/3) --- */
 #exp-right {
   flex: 2;
   border-radius: 10px;
@@ -90,11 +89,20 @@
   line-height: 1.5;
 }
 
-/* ===== Timeline Styles ===== */
+#experience-date-range {
+  font-size: 1rem;
+  color: inherit;
+  margin-bottom: 15px;
+  font-style: italic;
+}
+
+/* ════════════════════════════
+   TIMELINE — DESKTOP
+════════════════════════════ */
 .timeline-container {
   position: relative;
   height: 300px;
-  width: 150px; /* Increased width to accommodate both markers and slider */
+  width: 150px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -107,10 +115,10 @@
   display: flex;
   justify-content: center;
   z-index: 10;
-  margin-left: 60px; /* Push slider to the right to make space for markers */
+  margin-left: 60px;
 }
 
-/* Vertical slider styling */
+/* Vertical slider */
 #timeline {
   -webkit-appearance: none;
   appearance: none;
@@ -130,7 +138,6 @@
   cursor: pointer;
 }
 
-/* Track styling for WebKit browsers */
 #timeline::-webkit-slider-runnable-track {
   width: 100%;
   height: 8px;
@@ -148,13 +155,12 @@
   background: #007bff;
   cursor: pointer;
   border: 2px solid white;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
   margin-top: -6px;
   z-index: 30;
   position: relative;
 }
 
-/* Track styling for Firefox */
 #timeline::-moz-range-track {
   width: 100%;
   height: 8px;
@@ -170,15 +176,13 @@
   background: #007bff;
   cursor: pointer;
   border: 2px solid white;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-  z-index: 30;
-  position: relative;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
 }
 
 /* Tooltip */
 .tooltip {
   position: absolute;
-  left: 110px; /* Moved further right to align with new slider position */
+  left: 110px;
   background: #007bff;
   color: white;
   padding: 6px 12px;
@@ -188,7 +192,7 @@
   white-space: nowrap;
   opacity: 0;
   transition: opacity 0.3s ease;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
   z-index: 40;
   pointer-events: none;
   transform: translateY(-50%);
@@ -205,17 +209,15 @@
   border-color: transparent #007bff transparent transparent;
 }
 
-.tooltip.show {
-  opacity: 1;
-}
+.tooltip.show { opacity: 1; }
 
-/* Date markers - Completely redesigned layout */
+/* Markers */
 .timeline-markers {
   position: absolute;
   left: 0;
   top: 0;
   height: 100%;
-  width: 60px; /* Fixed width for markers column */
+  width: 60px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -230,8 +232,9 @@
   color: inherit;
   font-size: 11px;
   padding: 0 5px;
-  justify-content: flex-end; /* Align text to the right */
+  justify-content: flex-end;
   text-align: right;
+  position: relative;
 }
 
 .marker::before {
@@ -241,111 +244,142 @@
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.5);
   position: absolute;
-  right: -15px; /* Position dots to the right of text */
+  right: -15px;
   top: 50%;
   transform: translateY(-50%);
 }
 
-/* Specific marker positions - keep the order */
-.marker.today {
-  order: 1;
-}
+.marker.today  { order: 1; }
+.marker.year-2023 { order: 2; }
+.marker.year-2022 { order: 3; }
+.marker.start  { order: 4; }
 
-.marker.year-2023 {
-  order: 2;
-}
-
-.marker.year-2022 {
-  order: 3;
-}
-
-.marker.start {
-  order: 4;
-}
-
-/* Experience Date Range */
-#experience-date-range {
-  font-size: 1rem;
-  color: inherit;
-  margin-bottom: 15px;
-  font-style: italic;
-}
-
-/* Responsive Design */
+/* ════════════════════════════
+   TABLET  (≤ 900px)
+════════════════════════════ */
 @media (max-width: 900px) {
   #exp-bottom {
-    flex-direction: column;
+    flex-direction: column;  /* stack left/right panels */
   }
-  
+
   .experience-section {
     min-height: auto;
   }
-  
+
+  /* Shrink vertical timeline so it fits in a shorter panel */
   .timeline-container {
-    height: 200px;
+    height: 220px;
     width: 130px;
   }
-  
+
   #timeline {
-    width: 200px;
-    margin-left: -100px;
+    width: 220px;
+    margin-left: -110px;
   }
-  
-  .slider-wrapper {
-    margin-left: 50px;
-  }
-  
-  .tooltip {
-    left: 90px;
-  }
-  
-  .timeline-markers {
-    width: 50px;
-  }
-  
-  .marker::before {
-    right: -12px;
+
+  .slider-wrapper { margin-left: 50px; }
+  .tooltip        { left: 90px; }
+  .timeline-markers { width: 50px; }
+  .marker::before { right: -12px; }
+
+  #exp-left {
+    /* When stacked, switch timeline to horizontal so it's easier to use */
+    min-height: 160px;
   }
 }
 
+/* ════════════════════════════
+   MOBILE  (≤ 600px)
+════════════════════════════ */
 @media (max-width: 600px) {
   .experience-section {
     padding: 15px;
   }
-  
+
+  #exp-top {
+    padding-left: 5px;
+  }
+
   #exp-top h2 {
-    font-size: 1.7rem;
+    font-size: 1.6rem;
   }
-  
+
   .timeline-title {
-    font-size: 1.1rem;
+    font-size: 1rem;
   }
-  
+
   .experience-content h3 {
-    font-size: 1.3rem;
+    font-size: 1.2rem;
   }
-  
+
+  .experience-content p {
+    font-size: 0.9rem;
+  }
+
+  /* ── Switch to HORIZONTAL slider on mobile ── 
+     Vertical sliders are painful to drag on small screens.
+     We un-rotate the slider and reflow the container.        */
+  #exp-left-bottom {
+    padding: 10px 0;
+    flex-direction: column;
+  }
+
   .timeline-container {
-    width: 120px;
+    width: 100%;          /* full width of the panel */
+    height: auto;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 0;
   }
-  
-  .tooltip {
-    left: 80px;
-  }
-  
+
   .slider-wrapper {
-    margin-left: 45px;
+    width: 90%;           /* wide horizontal track */
+    height: auto;
+    margin-left: 0;
+    justify-content: center;
   }
-  
+
+  #timeline {
+    transform: none;      /* remove rotation — now horizontal */
+    position: static;
+    width: 100%;
+    margin: 0;
+    top: unset;
+    left: unset;
+  }
+
+  /* Markers become a horizontal row under the slider */
   .timeline-markers {
-    width: 45px;
+    position: static;
+    width: 90%;
+    height: auto;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
   }
-  
+
   .marker {
+    height: auto;
     font-size: 10px;
+    justify-content: center;
+    text-align: center;
+    padding: 0;
   }
-  
-  .marker::before {
-    right: -10px;
+
+  /* Hide the dot decorators on horizontal layout — they don't place well */
+  .marker::before { display: none; }
+
+  /* Tooltip repositions above the slider */
+  .tooltip {
+    position: static;
+    display: inline-block;
+    margin-bottom: 6px;
+    transform: none;
+    opacity: 1;           /* always visible on mobile — no hover */
+    font-size: 11px;
+    padding: 4px 10px;
   }
+
+  .tooltip::after { display: none; } /* remove left arrow */
 }

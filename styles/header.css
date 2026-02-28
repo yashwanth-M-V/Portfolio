@@ -2,7 +2,6 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Macondo&display=swap');
 
-
 .header-container {
   display: flex;
   align-items: center;
@@ -11,6 +10,7 @@
   margin-top: 20px;
   max-width: 60%;
   font-family: 'Macondo', cursive;
+  position: relative;   /* needed for hamburger positioning */
 }
 
 /* Left side: profile image */
@@ -23,9 +23,8 @@
   height: 70px;
   border-radius: 10%;
   object-fit: cover;
-  /* border: 2px solid rgba(255, 255, 255, 0.5); */
-  /* box-shadow: 0 2px 10px rgba(0,0,0,0.3); */
-} 
+  transition: transform 0.3s ease, filter 0.3s ease, box-shadow 0.3s ease;
+}
 
 /* Right side: navigation links */
 .header-right {
@@ -49,32 +48,46 @@
   transition: color 0.3s ease, transform 0.2s ease;
 }
 
+.light-mode .nav-links a { color: #000000; }
+.dark-mode .nav-links a  { color: #ffffff; }
 
-/* Light mode → links follow the theme (black) */
-.light-mode .nav-links a {
-  color: #000000;
-}
-
-/* Dark mode → links follow the theme (white) */
-.dark-mode .nav-links a {
-  color: #ffffff;
-}
-
-/* Hover → purple, always */
 .nav-links a:hover {
-  color: #c57dff;  /* light purple */
+  color: #c57dff;
   text-shadow: 0 0 5px rgba(197, 125, 255, 0.4);
   transform: translateY(-2px);
 }
 
-.profile-pic {
-  width: 80px;
-  height: 80px;
-  object-fit: cover;
+.nav-links a.active {
+  color: #ffd6d6;
+}
+
+/* ── Hamburger button (hidden on desktop) ── */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 5px;
+  z-index: 1001;
+}
+
+.hamburger span {
+  display: block;
+  width: 25px;
+  height: 3px;
+  background-color: currentColor;
+  border-radius: 3px;
   transition: all 0.3s ease;
 }
 
-/* Add to header.css */
+/* Animate hamburger → X when open */
+.hamburger.open span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
+/* ── Clickable pic ── */
 .clickable-pic {
   cursor: pointer;
   transition: all 0.3s ease;
@@ -83,33 +96,6 @@
 .clickable-pic:hover {
   transform: scale(1.05);
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
-  border-color: rgba(255, 255, 255, 0.5);
-}
-
-
-/* Animation for image change */
-.profile-pic {
-  transition: transform 0.3s ease, filter 0.3s ease, box-shadow 0.3s ease;
-}
-/* Responsive */
-@media (max-width: 768px) {
-  .header-container {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
-
-  .nav-links {
-    flex-wrap: wrap;
-    gap: 15px;
-    justify-content: center;
-  }
-
-  .profile-pic {
-    width: 60px;
-    height: 60px;
-    margin-bottom: 10px;
-  }
 }
 
 #profile-pic {
@@ -117,25 +103,18 @@
   cursor: pointer !important;
 }
 
-
-/* ----- ACTIVE LINK STYLE ----- */
-.nav-links a.active {
-  color: #ffd6d6;
-}
-
+/* ── Active link ── */
 .nav-links a.active::after {
   width: 100%;
   background-color: #ffd6d6;
 }
 
-
-/* Wrapper for controlling particle explosion */
+/* ── Particles ── */
 .profile-wrapper {
   position: relative;
   display: inline-block;
 }
 
-/* Particle styles */
 .particle {
   position: absolute;
   font-size: 1.6rem;
@@ -148,21 +127,10 @@
   opacity: 1;
 }
 
-/* Explosion animation */
 @keyframes particle-fly {
-  0% {
-    opacity: 1;
-    transform: translate(0, 0) scale(1);
-  }
-  100% {
-    opacity: 0;
-    transform: translate(
-      calc((var(--x) * 1px)),
-      calc((var(--y) * 1px))
-    ) scale(0.3);
-  }
+  0%   { opacity: 1; transform: translate(0, 0) scale(1); }
+  100% { opacity: 0; transform: translate(calc(var(--x) * 1px), calc(var(--y) * 1px)) scale(0.3); }
 }
-
 
 .explosion-piece {
   position: fixed;
@@ -177,6 +145,49 @@
   transition: transform 1.2s ease-out, opacity 1.2s ease-out;
 }
 
-.explosion-piece::before {
-  content: "?";
+.explosion-piece::before { content: "?"; }
+
+/* ════════════════════════════
+   MOBILE STYLES
+════════════════════════════ */
+@media (max-width: 768px) {
+
+  .header-container {
+    max-width: 90%;
+    padding: 12px 20px;
+    flex-wrap: wrap;
+  }
+
+  /* Show hamburger, hide nav by default */
+  .hamburger { display: flex; }
+
+  .header-right {
+    width: 100%;
+    order: 3;   /* below profile pic + hamburger */
+  }
+
+  .nav-links {
+    display: none;          /* hidden until toggled */
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    padding: 15px 0;
+    width: 100%;
+    border-top: 1px solid rgba(255,255,255,0.2);
+    margin-top: 10px;
+  }
+
+  .nav-links.open {
+    display: flex;          /* show when hamburger clicked */
+  }
+
+  .nav-links a {
+    font-size: 1.2em;
+    padding: 5px 0;
+  }
+
+  .profile-pic {
+    width: 55px;
+    height: 55px;
+  }
 }

@@ -39,5 +39,6 @@ document.addEventListener("DOMContentLoaded", () => {
   loadHTML("education-placeholder", "html_files/education.html");
   loadHTML("experience-placeholder", "html_files/experience.html");
   loadHTML("footer-placeholder", "html_files/footer.html");
+  loadHTML("beyond-work-placeholder", "html_files/beyond_work.html");
   
 });

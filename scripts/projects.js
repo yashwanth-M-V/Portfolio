@@ -1,9 +1,13 @@
 function initProjectsCarousel() {
-  const track = document.querySelector(".projects-track");
-  const slides = Array.from(document.querySelectorAll(".projects-section"));
-  const nextBtn = document.querySelector(".right-btn");
-  const prevBtn = document.querySelector(".left-btn");
+  const track      = document.querySelector(".projects-track");
+  const slides     = Array.from(document.querySelectorAll(".projects-section"));
+  const nextBtn    = document.querySelector(".right-btn");
+  const prevBtn    = document.querySelector(".left-btn");
   const indicators = Array.from(document.querySelectorAll(".indicator"));
+  const carousel   = document.querySelector(".projects-carousel");
+  const pauseBtn   = document.getElementById("carousel-pause-btn");
+  const pauseIcon  = pauseBtn ? pauseBtn.querySelector(".pause-icon")  : null;
+  const pauseLabel = pauseBtn ? pauseBtn.querySelector(".pause-label") : null;
 
   console.log("Projects carousel elements:", {
     track: !!track,
@@ -12,67 +16,43 @@ function initProjectsCarousel() {
     prevBtn: !!prevBtn
   });
 
-  // Check if all required elements exist
   if (!track || !nextBtn || !prevBtn || slides.length === 0) {
     console.log("Projects carousel elements not found yet - will retry");
     return false;
   }
 
-  let currentIndex = 0;
-  let autoSlideInterval;
-  let isAnimating = false;
+  let currentIndex      = 0;
+  let autoSlideInterval = null;
+  let isAnimating       = false;
+  let isPaused          = false;   // manual pause flag
+  let isHovered         = false;   // hover pause flag
 
+  // ── Core: calculate and apply position (YOUR original logic) ──
   function calculateSlidePosition() {
     if (isAnimating) return;
-    
     isAnimating = true;
-    
-    // Calculate the exact position to center the current slide
-    const slide = slides[0];
-    const slideStyle = window.getComputedStyle(slide);
+
+    const slide      = slides[0];
     const trackStyle = window.getComputedStyle(track);
-    
-    const slideWidth = slide.offsetWidth;
-    const gap = parseInt(trackStyle.gap || 30);
-    const trackPadding = parseInt(trackStyle.paddingLeft || 0) + parseInt(trackStyle.paddingRight || 0);
-    
-    // Calculate the total width of track content
-    const totalContentWidth = (slideWidth + gap) * slides.length - gap;
-    
-    // Calculate the transform needed to center the current slide
-    const slideCenter = currentIndex * (slideWidth + gap);
+
+    const slideWidth      = slide.offsetWidth;
+    const gap             = parseInt(trackStyle.gap || 30);
+    const slideCenter     = currentIndex * (slideWidth + gap);
     const containerCenter = track.offsetWidth / 2;
-    const transformValue = containerCenter - slideCenter - (slideWidth / 2);
+    const transformValue  = containerCenter - slideCenter - (slideWidth / 2);
 
     console.log("Position calculation:", {
-      slideWidth,
-      gap,
-      trackPadding,
-      totalContentWidth,
-      slideCenter,
-      containerCenter,
-      transformValue,
-      currentIndex
+      slideWidth, gap, slideCenter, containerCenter, transformValue, currentIndex
     });
 
     track.style.transform = `translateX(${transformValue}px)`;
 
-    // Update active state for slides
-    slides.forEach((slide, index) => {
-      slide.classList.toggle('active', index === currentIndex);
-    });
-
-    // Update indicators
-    indicators.forEach((indicator, index) => {
-      indicator.classList.toggle("active", index === currentIndex);
-    });
+    slides.forEach((s, i) => s.classList.toggle("active", i === currentIndex));
+    indicators.forEach((ind, i) => ind.classList.toggle("active", i === currentIndex));
 
     resetAutoSlide();
 
-    // Reset animation flag after transition
-    setTimeout(() => {
-      isAnimating = false;
-    }, 800);
+    setTimeout(() => { isAnimating = false; }, 800);
   }
 
   function nextSlide() {
@@ -93,9 +73,12 @@ function initProjectsCarousel() {
     calculateSlidePosition();
   }
 
-  // --- Auto Slide ---
+  // ── Autoplay — only ticks when neither manually paused nor hovered ──
   function startAutoSlide() {
-    autoSlideInterval = setInterval(nextSlide, 5000);
+    clearInterval(autoSlideInterval);
+    autoSlideInterval = setInterval(() => {
+      if (!isPaused && !isHovered) nextSlide();
+    }, 5000);
   }
 
   function resetAutoSlide() {
@@ -103,75 +86,90 @@ function initProjectsCarousel() {
     startAutoSlide();
   }
 
-  // --- Event Listeners ---
+  // ── Pause button UI ──
+  function updatePauseBtn() {
+    if (!pauseBtn) return;
+    if (isPaused) {
+      pauseIcon.textContent  = "▶";
+      pauseLabel.textContent = "Resume";
+      pauseBtn.classList.add("paused");
+    } else {
+      pauseIcon.textContent  = "⏸";
+      pauseLabel.textContent = "Pause";
+      pauseBtn.classList.remove("paused");
+    }
+  }
+
+  // ── Event listeners ──
+
   nextBtn.addEventListener("click", nextSlide);
   prevBtn.addEventListener("click", prevSlide);
 
-  indicators.forEach((indicator) => {
-    indicator.addEventListener("click", () => {
-      const index = parseInt(indicator.getAttribute("data-index"));
-      goToSlide(index);
+  indicators.forEach((ind) => {
+    ind.addEventListener("click", () => {
+      goToSlide(parseInt(ind.getAttribute("data-index")));
     });
   });
 
-  // --- Keyboard navigation ---
+  // Keyboard navigation
   document.addEventListener("keydown", (e) => {
     if (e.key === "ArrowRight") nextSlide();
     else if (e.key === "ArrowLeft") prevSlide();
   });
 
-  // --- Hover pause ---
-  const carousel = document.querySelector(".projects-carousel");
-  carousel.addEventListener("mouseenter", () => clearInterval(autoSlideInterval));
-  carousel.addEventListener("mouseleave", startAutoSlide);
+  // Hover pause — does NOT change isPaused so button state is preserved
+  if (carousel) {
+    carousel.addEventListener("mouseenter", () => { isHovered = true; });
+    carousel.addEventListener("mouseleave", () => { isHovered = false; });
+  }
 
-  // --- Swipe for touch devices ---
+  // Manual pause / resume button
+  if (pauseBtn) {
+    pauseBtn.addEventListener("click", () => {
+      isPaused = !isPaused;
+      updatePauseBtn();
+    });
+  }
+
+  // Touch swipe
   let startX = 0;
   track.addEventListener("touchstart", (e) => {
     startX = e.touches[0].clientX;
-    clearInterval(autoSlideInterval);
-  });
-  
+  }, { passive: true });
+
   track.addEventListener("touchend", (e) => {
-    const endX = e.changedTouches[0].clientX;
-    const diff = startX - endX;
-    const swipeThreshold = 50;
-    
-    if (Math.abs(diff) > swipeThreshold) {
+    const diff = startX - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 50) {
       diff > 0 ? nextSlide() : prevSlide();
     }
-    
-    startAutoSlide();
-  });
+  }, { passive: true });
 
-  // --- Initialize ---
-  // Wait a bit for the DOM to fully render
+  // ── Initialise ──
   setTimeout(() => {
     calculateSlidePosition();
     startAutoSlide();
+    updatePauseBtn();
   }, 100);
-  
-  console.log("Projects carousel initialized successfully");
+
+  console.log("Projects carousel initialised successfully");
   return true;
 }
 
-// Initialize carousel
+// ── Bootstrap with retry (YOUR original pattern) ──
 document.addEventListener("DOMContentLoaded", () => {
-  // Try initializing right away
   if (!initProjectsCarousel()) {
-    // If not ready, set up a retry mechanism
     console.log("Projects carousel not ready, setting up retry...");
     let retryCount = 0;
     const maxRetries = 10;
-    
+
     const retryInterval = setInterval(() => {
       retryCount++;
       if (initProjectsCarousel()) {
         clearInterval(retryInterval);
-        console.log("Projects carousel initialized after retry");
+        console.log("Projects carousel initialised after retry");
       } else if (retryCount >= maxRetries) {
         clearInterval(retryInterval);
-        console.log("Failed to initialize projects carousel after max retries");
+        console.error("Failed to initialise projects carousel after max retries");
       }
     }, 200);
   }

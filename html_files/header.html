@@ -5,8 +5,15 @@
          alt="Profile Picture" class="profile-pic clickable-pic">
   </div>
 
+  <!-- Hamburger button (visible only on mobile via CSS) -->
+  <button class="hamburger" id="hamburger-btn" aria-label="Toggle navigation">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+
   <div class="header-right">
-    <nav class="nav-links">
+    <nav class="nav-links" id="nav-links">
       <a href="#about">About</a>
       <a href="#skills">Skills</a>
       <a href="#education">Education</a>
@@ -17,9 +24,31 @@
   </div>
 </header>
 
-<script src="header.js"></script>
+<script src="scripts/header.js"></script>
 <script>
   document.addEventListener("DOMContentLoaded", () => {
-    window.initProfilePicture();
+    // Profile picture initializer
+    if (typeof window.initProfilePicture === "function") {
+      window.initProfilePicture();
+    }
+
+    // Hamburger toggle
+    const btn = document.getElementById("hamburger-btn");
+    const nav = document.getElementById("nav-links");
+
+    if (btn && nav) {
+      btn.addEventListener("click", () => {
+        btn.classList.toggle("open");
+        nav.classList.toggle("open");
+      });
+
+      // Close menu when a nav link is clicked
+      nav.querySelectorAll("a").forEach(link => {
+        link.addEventListener("click", () => {
+          btn.classList.remove("open");
+          nav.classList.remove("open");
+        });
+      });
+    }
   });
 </script>

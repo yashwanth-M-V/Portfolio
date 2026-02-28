@@ -1,65 +1,44 @@
-/* Layout for the about section */
+/* about.css */
 
-  @import url('https://fonts.googleapis.com/css2?family=Grenze+Gotisch:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Grenze+Gotisch:wght@100..900&display=swap');
 
 .about-section {
-  display: flex;                /* Put left and right side by side */
+  display: flex;
   justify-content: space-between;
-  align-items: center;          /* Vertically align content */
-  gap: 20px;                    /* Small gap between columns */
+  align-items: center;
+  gap: 20px;
   padding: 20px;
 }
 
-/* Left section (70%) */
 #about-left {
-  flex: 70%;                    /* Take up 70% of available space */
-  background-color: rgba(255, 255, 255, 0.1); /* Optional styling */
+  flex: 70%;
+  background-color: rgba(255, 255, 255, 0.1);
   border-radius: 30px;
   padding: 10px;
   text-align: left;
-
 }
 
 #about-left p {
-  flex: 70%;                    /* Take up 70% of available space */
   border-radius: 10px;
-  padding: 10px 10px;
+  padding: 10px;
   text-align: left;
-
 }
 
-/* Right section (30%) */
 #about-right {
-  flex: 30%;                    /* Take up 30% of available space */
-  /* background-color: rgba(255, 255, 255, 0.15);  Optional styling */
+  flex: 30%;
   border-radius: 10px;
   padding: 20px;
   text-align: center;
 }
 
-/* Make layout responsive for mobile */
-@media (max-width: 768px) {
-  .about-section {
-    flex-direction: column;   /* Stack vertically on smaller screens */
-  }
-
-  #about-left,
-  #about-right {
-    flex: 100%;
-  }
-}
-
-/* ----------------------------
-   About Section button styles
------------------------------ */
-
+/* ── Buttons ── */
 .about-buttons {
   display: flex;
   gap: 15px;
   margin-top: 15px;
+  flex-wrap: wrap;    /* buttons wrap on very small screens */
 }
 
-/* Shared button style */
 .about-btn {
   background-color: transparent;
   color: inherit;
@@ -68,14 +47,13 @@
   padding: 10px 20px;
   font-size: 1rem;
   cursor: pointer;
-  text-decoration: none; /* removes underline for <a> */
+  text-decoration: none;
   transition: all 0.3s ease;
   display: inline-flex;
   align-items: center;
   justify-content: center;
 }
 
-/* Hover effect */
 .about-btn:hover {
   color: #c57dff;
   border-color: #c57dff;
@@ -83,17 +61,11 @@
   transform: translateY(-2px);
 }
 
-/* Optional: add slight shadow */
 .about-btn:active {
   transform: translateY(0);
-  box-shadow: 0 0 0 transparent;
 }
 
-
-/* ----------------------------
-   About Section Image Flip Animation
------------------------------ */
-
+/* ── About image ── */
 #about-right img {
   width: 100%;
   max-width: 250px;
@@ -108,12 +80,47 @@
   opacity: 0;
 }
 
-
-
 .download-gif {
-  width: 15px;        /* Adjust size */
+  width: 15px;
   height: 15px;
-  margin-left: 8px;   /* Space between text and gif */
+  margin-left: 8px;
   vertical-align: middle;
-  pointer-events: none; /* prevents click interference */
+  pointer-events: none;
+}
+
+/* ════════════════════════════
+   MOBILE
+════════════════════════════ */
+@media (max-width: 768px) {
+  .about-section {
+    flex-direction: column;   /* stack vertically */
+  }
+
+  #about-left,
+  #about-right {
+    flex: 100%;
+    width: 100%;
+    padding: 10px 5px;
+  }
+
+  /* Show image above text on mobile — feels more like a profile card */
+  #about-right {
+    order: -1;
+  }
+
+  #about-right img {
+    max-width: 160px;         /* smaller image on mobile */
+  }
+
+  #about-left h1 {
+    font-size: 1.5rem;        /* prevent long names from overflowing */
+  }
+
+  #about-left h3 {
+    font-size: 1rem;
+  }
+
+  .about-buttons {
+    justify-content: center;  /* center buttons when stacked */
+  }
 }

@@ -1,4 +1,4 @@
-/* Projects Carousel Container */
+/* ── Projects Carousel Container ── */
 .projects-carousel-container {
   width: 100%;
   padding: 40px 0;
@@ -7,7 +7,7 @@
 
 .projects-carousel {
   position: relative;
-  width: 95%; /* Increased to show more of adjacent tiles */
+  width: 95%;
   margin: 0 auto;
   overflow: hidden;
   display: flex;
@@ -18,7 +18,7 @@
   padding: 20px 0;
 }
 
-/* Fade Effects */
+/* Fade edges */
 .projects-carousel::before,
 .projects-carousel::after {
   content: '';
@@ -30,27 +30,22 @@
   pointer-events: none;
 }
 
-.projects-carousel::before {
-  left: 0;
-}
-
-.projects-carousel::after {
-  right: 0;
-}
+.projects-carousel::before { left: 0; }
+.projects-carousel::after  { right: 0; }
 
 /* Scroll Track */
 .projects-track {
   display: flex;
   transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   width: 100%;
-  gap: 30px; /* Increased gap for better separation */
-  padding: 0 10%; /* Added padding to center the active slide */
+  gap: 30px;
+  padding: 0 10%;
 }
 
-/* Project Section - Further reduced width to show both adjacent tiles */
+/* ── Project Card ── */
 .projects-section {
   display: flex;
-  flex: 0 0 60%; /* Reduced from 70% to show more of both sides */
+  flex: 0 0 60%;
   min-width: 60%;
   height: 400px;
   padding: 25px;
@@ -62,11 +57,10 @@
   border: 1px solid rgba(255, 255, 255, 0.25);
   box-shadow: 0 12px 40px rgba(0, 0, 0, 0.25);
   transition: all 0.4s ease;
-  opacity: 0.6; /* More transparent for non-active slides */
-  transform: scale(0.9); /* Smaller adjacent tiles */
+  opacity: 0.6;
+  transform: scale(0.9);
 }
 
-/* Center tile - more prominent */
 .projects-section.active {
   opacity: 1;
   transform: scale(1);
@@ -83,7 +77,7 @@
   transform: scale(1.02);
 }
 
-/* Left Section (Image/Visual) */
+/* Left: image panel */
 #proj-left {
   flex: 1;
   display: flex;
@@ -100,17 +94,18 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  color: inherit;
+  color: white;
   text-align: center;
+  padding: 15px;
 }
 
 .project-image h3 {
-  font-size: 2rem;
+  font-size: 1.6rem;
   font-weight: 600;
-  text-shadow: 0 2px 8px rgba(130, 112, 112, 0.4);
+  text-shadow: 0 2px 8px rgba(0,0,0,0.4);
 }
 
-/* Right Section (Content) */
+/* Right: content panel */
 #proj-right {
   flex: 2;
   display: flex;
@@ -135,7 +130,7 @@
   opacity: 0.9;
 }
 
-/* Project Buttons */
+/* Project action buttons */
 .project-buttons {
   display: flex;
   justify-content: flex-start;
@@ -151,16 +146,16 @@
   cursor: pointer;
   transition: all 0.3s ease;
   font-weight: 500;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
 }
 
 .project-buttons button:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.3);
   background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
 }
 
-/* Navigation Buttons */
+/* ── Nav Arrows ── */
 .nav-btn {
   position: absolute;
   top: 50%;
@@ -175,33 +170,28 @@
   border-radius: 50%;
   transition: all 0.3s ease;
   z-index: 100;
-  pointer-events: auto;
   display: flex;
   justify-content: center;
   align-items: center;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
   backdrop-filter: blur(10px);
 }
 
 .nav-btn:hover {
   background: rgba(255, 255, 255, 0.4);
   transform: translateY(-50%) scale(1.1);
-  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 6px 25px rgba(0,0,0,0.4);
 }
 
-.left-btn { 
-  left: 2%; 
-}
+.left-btn  { left: 2%; }
+.right-btn { right: 2%; }
 
-.right-btn { 
-  right: 2%; 
-}
-
-/* Carousel Indicators */
+/* ── Carousel Indicators ── */
 .carousel-indicators {
   display: flex;
   justify-content: center;
-  margin-top: 30px;
+  align-items: center;
+  margin-top: 25px;
   gap: 12px;
 }
 
@@ -216,23 +206,72 @@
 }
 
 .indicator.active {
-  background: inherit;
+  background: white;
   transform: scale(1.3);
   border-color: rgba(255, 255, 255, 0.5);
 }
 
-/* Responsive Design */
+/* ════════════════════════════
+   PAUSE BUTTON
+   Sits centred below indicators.
+   Shows ⏸ while playing, ▶ while paused.
+════════════════════════════ */
+.carousel-controls {
+  display: flex;
+  justify-content: center;
+  margin-top: 14px;
+}
+
+.pause-btn {
+  background: rgba(255, 255, 255, 0.2);
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  border-radius: 50px;
+  color: inherit;
+  padding: 7px 20px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(8px);
+  letter-spacing: 0.03em;
+}
+
+.pause-btn:hover {
+  background: rgba(255, 255, 255, 0.35);
+  border-color: rgba(255, 255, 255, 0.7);
+  transform: scale(1.05);
+}
+
+.pause-btn .pause-icon {
+  font-size: 1rem;
+  line-height: 1;
+}
+
+/* Paused state: subtle purple tint so the user knows it's stopped */
+.pause-btn.paused {
+  background: rgba(200, 0, 255, 0.25);
+  border-color: rgba(200, 0, 255, 0.5);
+}
+
+/* ── Pause-on-hover: dim the card slightly to hint it's readable ── */
+.projects-carousel:not(.auto-paused) .projects-section.active:hover {
+  box-shadow: 0 16px 50px rgba(0, 0, 0, 0.45);
+}
+
+/* ════════════════════════════
+   TABLET  (≤ 1024px)
+════════════════════════════ */
 @media (max-width: 1024px) {
-  .projects-carousel {
-    width: 95%;
-  }
-  
+  .projects-carousel { width: 95%; }
+
   .projects-section {
     flex: 0 0 65%;
     min-width: 65%;
     height: 380px;
   }
-  
+
   .nav-btn {
     width: 50px;
     height: 50px;
@@ -240,73 +279,107 @@
   }
 }
 
+/* ════════════════════════════
+   TABLET  (≤ 768px)
+════════════════════════════ */
 @media (max-width: 768px) {
-  .projects-carousel {
-    width: 98%;
-  }
-  
+  .projects-carousel { width: 98%; }
+
   .projects-section {
-    flex: 0 0 75%;
-    min-width: 75%;
-    flex-direction: column;
+    flex: 0 0 80%;
+    min-width: 80%;
+    flex-direction: column;  /* stack image above content */
     height: auto;
-    min-height: 500px;
+    min-height: 480px;
   }
-  
+
   #proj-left {
-    flex: 1;
-    min-height: 200px;
+    flex: unset;
+    height: 160px;          /* fixed image height when stacked */
+    min-height: unset;
   }
-  
+
   #proj-right {
-    flex: 2;
+    flex: unset;
+    padding: 15px;
   }
-  
-  .project-buttons {
-    justify-content: center;
-  }
-  
+
+  .project-buttons { justify-content: center; }
+
   .nav-btn {
-    width: 45px;
-    height: 45px;
-    font-size: 20px;
+    width: 42px;
+    height: 42px;
+    font-size: 18px;
   }
-  
-  .left-btn { 
-    left: 1%; 
-  }
-  
-  .right-btn { 
-    right: 1%; 
+
+  .left-btn  { left: 1%; }
+  .right-btn { right: 1%; }
+
+  /* On tablet the arrows overlap cards — push them outside */
+  .projects-carousel {
+    padding-left: 48px;
+    padding-right: 48px;
   }
 }
 
+/* ════════════════════════════
+   MOBILE  (≤ 480px)
+════════════════════════════ */
 @media (max-width: 480px) {
+  .projects-carousel-container {
+    padding: 20px 0;
+  }
+
   .projects-carousel {
     width: 100%;
+    padding-left: 44px;
+    padding-right: 44px;
   }
-  
+
   .projects-section {
-    flex: 0 0 85%;
-    min-width: 85%;
+    flex: 0 0 90%;
+    min-width: 90%;
+    min-height: 420px;
+    padding: 15px;
+    gap: 12px;
   }
-  
+
+  #proj-left {
+    height: 130px;
+  }
+
+  .project-image h3 {
+    font-size: 1.2rem;
+  }
+
   #proj-right h2 {
-    font-size: 1.5rem;
+    font-size: 1.3rem;
+    margin-bottom: 8px;
   }
-  
+
+  #proj-right p {
+    font-size: 0.9rem;
+  }
+
+  /* Buttons stack full-width */
   .project-buttons {
     flex-direction: column;
     gap: 10px;
   }
-  
+
   .project-buttons button {
     width: 100%;
+    padding: 12px;
   }
-  
+
   .nav-btn {
-    width: 40px;
-    height: 40px;
-    font-size: 18px;
+    width: 36px;
+    height: 36px;
+    font-size: 16px;
+  }
+
+  .pause-btn {
+    font-size: 0.8rem;
+    padding: 6px 16px;
   }
 }
