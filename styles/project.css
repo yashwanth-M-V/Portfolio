@@ -1,4 +1,6 @@
-/* ── Projects Carousel Container ── */
+/* ══════════════════════════════
+   PROJECTS CAROUSEL
+══════════════════════════════ */
 .projects-carousel-container {
   width: 100%;
   padding: 40px 0;
@@ -18,7 +20,6 @@
   padding: 20px 0;
 }
 
-/* Fade edges */
 .projects-carousel::before,
 .projects-carousel::after {
   content: '';
@@ -29,11 +30,9 @@
   z-index: 2;
   pointer-events: none;
 }
-
 .projects-carousel::before { left: 0; }
 .projects-carousel::after  { right: 0; }
 
-/* Scroll Track */
 .projects-track {
   display: flex;
   transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -42,14 +41,13 @@
   padding: 0 10%;
 }
 
-/* ── Project Card ── */
+/* ── Card ── */
 .projects-section {
   display: flex;
   flex: 0 0 60%;
   min-width: 60%;
   height: 400px;
   padding: 25px;
-  justify-content: space-between;
   gap: 25px;
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(15px);
@@ -65,97 +63,186 @@
   opacity: 1;
   transform: scale(1);
   box-shadow: 0 16px 50px rgba(0, 0, 0, 0.35);
-  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-color: rgba(255, 255, 255, 0.4);
 }
 
-.projects-section:hover {
-  transform: scale(0.95);
-  box-shadow: 0 8px 35px rgba(0, 0, 0, 0.3);
-}
+.projects-section:hover        { transform: scale(0.95); }
+.projects-section.active:hover { transform: scale(1.02); }
 
-.projects-section.active:hover {
-  transform: scale(1.02);
-}
-
-/* Left: image panel */
-#proj-left {
+/* ════════════════════════════
+   LEFT PANEL
+   Always has the gradient as base.
+   Media layers on top of it.
+════════════════════════════ */
+.proj-left {
   flex: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   border-radius: 15px;
   overflow: hidden;
+  position: relative;
+  /* Gradient is always the background — shows through transparent icons */
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.project-image {
+/* Shared base for all three media types */
+.proj-media {
+  border-radius: 15px;
+}
+
+/* ── TYPE 1: Full-bleed GIF ──
+   Covers the entire panel edge-to-edge.
+   Gradient is hidden underneath.          */
+.proj-gif {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  transition: transform 0.4s ease;
+}
+
+.proj-left:hover .proj-gif {
+  transform: scale(1.04);   /* subtle zoom on hover */
+}
+
+/* ── TYPE 2: Transparent icon / PNG ──
+   Centred in the panel, gradient shows around it.
+   Drop shadow makes it pop off the gradient.      */
+.proj-icon-wrap {
   display: flex;
-  justify-content: center;
   align-items: center;
-  color: white;
-  text-align: center;
-  padding: 15px;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
 }
 
-.project-image h3 {
-  font-size: 1.6rem;
-  font-weight: 600;
-  text-shadow: 0 2px 8px rgba(0,0,0,0.4);
+.proj-icon {
+  width: 55%;             /* takes up ~half the panel */
+  max-width: 140px;
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 4px 16px rgba(0, 0, 0, 0.35));
+  transition: transform 0.35s ease, filter 0.35s ease;
 }
 
-/* Right: content panel */
-#proj-right {
+.proj-left:hover .proj-icon {
+  transform: scale(1.08) translateY(-4px);
+  filter: drop-shadow(0 8px 24px rgba(0, 0, 0, 0.45))
+          drop-shadow(0 0 12px rgba(255, 255, 255, 0.15));
+}
+
+/* ── TYPE 3: Fallback — gradient + initials ──
+   When no media is available.               */
+.proj-fallback {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.proj-initials {
+  font-size: 3rem;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.85);
+  letter-spacing: 6px;
+  text-shadow: 0 2px 16px rgba(0, 0, 0, 0.35);
+  user-select: none;
+}
+
+/* ════════════════════════════
+   RIGHT PANEL
+════════════════════════════ */
+.proj-right {
   flex: 2;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   border-radius: 15px;
-  padding: 25px;
+  padding: 20px 25px;
   color: inherit;
+  overflow: hidden;
 }
 
-#proj-right h2 {
-  font-size: 1.8rem;
-  margin-bottom: 15px;
-  color: inherit;
+.proj-right-top {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.proj-right h2 {
+  font-size: 1.7rem;
+  margin: 0;
   font-weight: 600;
 }
 
-#proj-right p {
-  font-size: 1rem;
+.proj-right p {
+  font-size: 0.95rem;
   line-height: 1.6;
-  margin-bottom: 20px;
+  margin: 0;
   opacity: 0.9;
 }
 
-/* Project action buttons */
-.project-buttons {
+/* Skill tags */
+.project-skills {
   display: flex;
-  justify-content: flex-start;
-  gap: 15px;
+  flex-wrap: wrap;
+  gap: 7px;
 }
 
-.project-buttons button {
-  padding: 12px 25px;
+.skill-tag {
+  background: rgba(102, 126, 234, 0.25);
+  border: 1px solid rgba(102, 126, 234, 0.5);
+  color: inherit;
+  border-radius: 20px;
+  padding: 3px 12px;
+  font-size: 0.78rem;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+/* Action buttons */
+.project-buttons {
+  display: flex;
+  gap: 12px;
+  margin-top: 15px;
+  flex-wrap: wrap;
+}
+
+.proj-btn {
+  padding: 10px 22px;
   border: none;
   border-radius: 8px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
   cursor: pointer;
-  transition: all 0.3s ease;
   font-weight: 500;
+  font-size: 0.9rem;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.3s ease;
   box-shadow: 0 4px 15px rgba(0,0,0,0.2);
 }
 
-.project-buttons button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(0,0,0,0.3);
-  background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+.github-btn {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
 }
 
-/* ── Nav Arrows ── */
+.demo-btn {
+  background: rgba(255, 255, 255, 0.15);
+  color: inherit;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+}
+
+.proj-btn:hover   { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.3); }
+.github-btn:hover { background: linear-gradient(135deg, #764ba2 0%, #667eea 100%); }
+.demo-btn:hover   { background: rgba(255, 255, 255, 0.25); }
+
+/* ── Nav arrows ── */
 .nav-btn {
   position: absolute;
   top: 50%;
@@ -180,13 +267,12 @@
 .nav-btn:hover {
   background: rgba(255, 255, 255, 0.4);
   transform: translateY(-50%) scale(1.1);
-  box-shadow: 0 6px 25px rgba(0,0,0,0.4);
 }
 
 .left-btn  { left: 2%; }
 .right-btn { right: 2%; }
 
-/* ── Carousel Indicators ── */
+/* ── Dot indicators ── */
 .carousel-indicators {
   display: flex;
   justify-content: center;
@@ -211,11 +297,7 @@
   border-color: rgba(255, 255, 255, 0.5);
 }
 
-/* ════════════════════════════
-   PAUSE BUTTON
-   Sits centred below indicators.
-   Shows ⏸ while playing, ▶ while paused.
-════════════════════════════ */
+/* ── Pause button ── */
 .carousel-controls {
   display: flex;
   justify-content: center;
@@ -235,100 +317,63 @@
   gap: 7px;
   transition: all 0.3s ease;
   backdrop-filter: blur(8px);
-  letter-spacing: 0.03em;
 }
 
-.pause-btn:hover {
-  background: rgba(255, 255, 255, 0.35);
-  border-color: rgba(255, 255, 255, 0.7);
-  transform: scale(1.05);
-}
+.pause-btn:hover       { background: rgba(255,255,255,0.35); border-color: rgba(255,255,255,0.7); transform: scale(1.05); }
+.pause-btn .pause-icon { font-size: 1rem; line-height: 1; }
+.pause-btn.paused      { background: rgba(200,0,255,0.25); border-color: rgba(200,0,255,0.5); }
 
-.pause-btn .pause-icon {
-  font-size: 1rem;
-  line-height: 1;
-}
-
-/* Paused state: subtle purple tint so the user knows it's stopped */
-.pause-btn.paused {
-  background: rgba(200, 0, 255, 0.25);
-  border-color: rgba(200, 0, 255, 0.5);
-}
-
-/* ── Pause-on-hover: dim the card slightly to hint it's readable ── */
-.projects-carousel:not(.auto-paused) .projects-section.active:hover {
-  box-shadow: 0 16px 50px rgba(0, 0, 0, 0.45);
-}
-
-/* ════════════════════════════
+/* ════════════════════
    TABLET  (≤ 1024px)
-════════════════════════════ */
+════════════════════ */
 @media (max-width: 1024px) {
-  .projects-carousel { width: 95%; }
-
-  .projects-section {
-    flex: 0 0 65%;
-    min-width: 65%;
-    height: 380px;
-  }
-
-  .nav-btn {
-    width: 50px;
-    height: 50px;
-    font-size: 24px;
-  }
+  .projects-section { flex: 0 0 65%; min-width: 65%; height: 380px; }
+  .nav-btn          { width: 50px; height: 50px; font-size: 24px; }
+  .proj-icon        { width: 50%; max-width: 120px; }
 }
 
-/* ════════════════════════════
+/* ════════════════════
    TABLET  (≤ 768px)
-════════════════════════════ */
+   Cards stack vertically
+════════════════════ */
 @media (max-width: 768px) {
-  .projects-carousel { width: 98%; }
+  .projects-carousel {
+    width: 98%;
+    padding-left: 48px;
+    padding-right: 48px;
+  }
 
   .projects-section {
     flex: 0 0 80%;
     min-width: 80%;
-    flex-direction: column;  /* stack image above content */
+    flex-direction: column;
     height: auto;
-    min-height: 480px;
-  }
-
-  #proj-left {
-    flex: unset;
-    height: 160px;          /* fixed image height when stacked */
-    min-height: unset;
-  }
-
-  #proj-right {
-    flex: unset;
+    min-height: 500px;
     padding: 15px;
+    gap: 15px;
   }
+
+  .proj-left {
+    flex: unset;
+    width: 100%;
+    height: 200px;   /* fixed height when stacked */
+  }
+
+  .proj-icon     { width: 40%; max-width: 100px; }
+  .proj-initials { font-size: 2.5rem; }
+  .proj-right    { flex: unset; padding: 10px 5px; }
 
   .project-buttons { justify-content: center; }
-
-  .nav-btn {
-    width: 42px;
-    height: 42px;
-    font-size: 18px;
-  }
-
+  .nav-btn  { width: 42px; height: 42px; font-size: 18px; }
   .left-btn  { left: 1%; }
   .right-btn { right: 1%; }
-
-  /* On tablet the arrows overlap cards — push them outside */
-  .projects-carousel {
-    padding-left: 48px;
-    padding-right: 48px;
-  }
 }
 
-/* ════════════════════════════
+/* ════════════════════
    MOBILE  (≤ 480px)
-════════════════════════════ */
+════════════════════ */
 @media (max-width: 480px) {
-  .projects-carousel-container {
-    padding: 20px 0;
-  }
+  .projects-carousel-container { padding: 20px 0; }
 
   .projects-carousel {
     width: 100%;
@@ -339,47 +384,20 @@
   .projects-section {
     flex: 0 0 90%;
     min-width: 90%;
-    min-height: 420px;
-    padding: 15px;
+    min-height: 460px;
+    padding: 12px;
     gap: 12px;
   }
 
-  #proj-left {
-    height: 130px;
-  }
+  .proj-left     { height: 160px; }
+  .proj-icon     { width: 45%; max-width: 80px; }
+  .proj-initials { font-size: 2rem; letter-spacing: 4px; }
+  .proj-right h2 { font-size: 1.3rem; }
+  .proj-right p  { font-size: 0.88rem; }
+  .skill-tag     { font-size: 0.72rem; padding: 2px 9px; }
 
-  .project-image h3 {
-    font-size: 1.2rem;
-  }
-
-  #proj-right h2 {
-    font-size: 1.3rem;
-    margin-bottom: 8px;
-  }
-
-  #proj-right p {
-    font-size: 0.9rem;
-  }
-
-  /* Buttons stack full-width */
-  .project-buttons {
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  .project-buttons button {
-    width: 100%;
-    padding: 12px;
-  }
-
-  .nav-btn {
-    width: 36px;
-    height: 36px;
-    font-size: 16px;
-  }
-
-  .pause-btn {
-    font-size: 0.8rem;
-    padding: 6px 16px;
-  }
+  .project-buttons { flex-direction: column; gap: 10px; }
+  .proj-btn        { width: 100%; justify-content: center; }
+  .nav-btn         { width: 36px; height: 36px; font-size: 16px; }
+  .pause-btn       { font-size: 0.8rem; padding: 6px 16px; }
 }

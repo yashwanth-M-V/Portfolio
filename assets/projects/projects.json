@@ -1,0 +1,38 @@
+[
+  {
+    "name": "RAG Chatbot",
+    "skills": ["Python", "LangChain", "FAISS", "OpenAI"],
+    "description": "Retrieval-Augmented Generation chatbot built for my MSc thesis. Answers real-time queries by retrieving relevant context from a document store before generating responses.",
+    "media": "",
+    "media_type": "",
+    "github": "https://github.com/yashwanth-M-V/your-repo",
+    "demo": ""
+  },
+  {
+    "name": "Data Pipeline – Snowflake",
+    "skills": ["Python", "Snowflake", "AWS S3", "SQL"],
+    "description": "Automated ETL pipeline ingesting raw CSV data from S3 into Snowflake with transformation layers, scheduling via Airflow, and Power BI dashboard output.",
+    "media": "",
+    "media_type": "",
+    "github": "https://github.com/yashwanth-M-V/your-repo",
+    "demo": ""
+  },
+  {
+    "name": "Weather Dashboard",
+    "skills": ["JavaScript", "Chart.js", "OpenWeather API"],
+    "description": "Interactive weather application using OpenWeather API with location-based forecasts, charts, and severe weather alerts.",
+    "media": "",
+    "media_type": "",
+    "github": "https://github.com/yashwanth-M-V/your-repo",
+    "demo": "https://your-live-demo.com"
+  },
+  {
+    "name": "Portfolio Website",
+    "skills": ["HTML", "CSS", "JavaScript"],
+    "description": "This responsive portfolio with glassmorphism design, dark/light mode, animated carousel, and a RAG-powered chat widget.",
+    "media": "",
+    "media_type": "",
+    "github": "https://github.com/yashwanth-M-V/your-repo",
+    "demo": "https://yashwanth-m-v.github.io"
+  }
+]
