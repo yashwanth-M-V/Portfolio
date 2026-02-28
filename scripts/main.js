@@ -31,10 +31,16 @@ document.getElementById("send-btn").onclick = async () => {
   input.value = "";
 
   try {
-    const response = await fetch(`http://127.0.0.1:8000/ask/?q=${encodeURIComponent(query)}`);
+    const response = await fetch(
+      `https://quantamyash-portfolio-chatbot-api.hf.space/ask`,
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ question: query })
+      }
+    );
     const data = await response.json();
     messagesDiv.innerHTML += `<div><b>Bot:</b> ${data.answer}</div>`;
-    messagesDiv.scrollTop = messagesDiv.scrollHeight;
   } catch (err) {
     messagesDiv.innerHTML += `<div><b>Bot:</b> Sorry, there was an error. Try again later.</div>`;
   }

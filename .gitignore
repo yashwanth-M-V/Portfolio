@@ -13,3 +13,6 @@ chatbot-website/.env
 
 # Data / embeddings
 chatbot-website/embeddings.npz
+
+
+.vscode/
