@@ -110,6 +110,8 @@
 
   #about-right img {
     max-width: 160px;         /* smaller image on mobile */
+    display: block;
+    margin: 0 auto;
   }
 
   #about-left h1 {

@@ -1,54 +1,47 @@
 <!-- header.html -->
 <header class="header-container glassmorphism-container">
+
+  <!-- Left: profile pic (always visible) -->
   <div class="header-left">
-    <img id="profile-pic" src="assets/header_pics/profile_pic_1.png"
-         alt="Profile Picture" class="profile-pic clickable-pic">
+    <img id="profile-pic"
+         src="assets/header_pics/profile_pic_7.gif"
+         alt="Profile Picture"
+         class="profile-pic clickable-pic">
   </div>
 
-  <!-- Hamburger button (visible only on mobile via CSS) -->
+  <!-- Desktop nav (hidden on mobile via CSS) -->
+  <div class="header-right">
+    <nav class="nav-links" id="nav-links">
+      <a href="#about"      class="nav-link">About</a>
+      <a href="#skills"     class="nav-link">Skills</a>
+      <a href="#education"  class="nav-link">Education</a>
+      <a href="#experience" class="nav-link">Experience</a>
+      <a href="#projects"   class="nav-link">Projects</a>
+      <a href="#contact"    class="nav-link">Contact Me</a>
+    </nav>
+  </div>
+
+  <!-- Hamburger button (mobile only, right side) -->
   <button class="hamburger" id="hamburger-btn" aria-label="Toggle navigation">
     <span></span>
     <span></span>
     <span></span>
   </button>
 
-  <div class="header-right">
-    <nav class="nav-links" id="nav-links">
-      <a href="#about">About</a>
-      <a href="#skills">Skills</a>
-      <a href="#education">Education</a>
-      <a href="#experience">Experience</a>
-      <a href="#projects">Projects</a>
-      <a href="#contact">Contact Me</a>
-    </nav>
+  <!-- Mobile dropdown (hidden until hamburger opens) -->
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="#about"      class="nav-link mobile-link">About</a>
+    <a href="#skills"     class="nav-link mobile-link">Skills</a>
+    <a href="#education"  class="nav-link mobile-link">Education</a>
+    <a href="#experience" class="nav-link mobile-link">Experience</a>
+    <a href="#projects"   class="nav-link mobile-link">Projects</a>
+    <a href="#contact"    class="nav-link mobile-link">Contact Me</a>
+
+    <!-- Theme toggle row -->
+    <div class="mobile-theme-row">
+      <span class="mobile-theme-label">Theme</span>
+      <button id="mobile-theme-toggle" class="mobile-theme-btn" aria-label="Toggle theme">☀️</button>
+    </div>
   </div>
+
 </header>
-
-<script src="scripts/header.js"></script>
-<script>
-  document.addEventListener("DOMContentLoaded", () => {
-    // Profile picture initializer
-    if (typeof window.initProfilePicture === "function") {
-      window.initProfilePicture();
-    }
-
-    // Hamburger toggle
-    const btn = document.getElementById("hamburger-btn");
-    const nav = document.getElementById("nav-links");
-
-    if (btn && nav) {
-      btn.addEventListener("click", () => {
-        btn.classList.toggle("open");
-        nav.classList.toggle("open");
-      });
-
-      // Close menu when a nav link is clicked
-      nav.querySelectorAll("a").forEach(link => {
-        link.addEventListener("click", () => {
-          btn.classList.remove("open");
-          nav.classList.remove("open");
-        });
-      });
-    }
-  });
-</script>

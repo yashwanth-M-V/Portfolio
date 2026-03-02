@@ -2,18 +2,23 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Macondo&display=swap');
 
+html { scroll-behavior: smooth; }
+
+/* ════════════════════════════
+   DESKTOP HEADER
+════════════════════════════ */
 .header-container {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 15px 40px;
-  margin-top: 20px;
+  padding: 12px 30px;
   max-width: 60%;
+  margin: 20px auto 0;
   font-family: 'Macondo', cursive;
-  position: relative;   /* needed for hamburger positioning */
+  position: relative;
 }
 
-/* Left side: profile image */
+/* ── Left: profile pic ── */
 .header-left {
   flex: 0 0 auto;
 }
@@ -26,16 +31,25 @@
   transition: transform 0.3s ease, filter 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Right side: navigation links */
+.clickable-pic { cursor: pointer; }
+.clickable-pic:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+}
+
+#profile-pic { pointer-events: all !important; cursor: pointer !important; }
+
+/* ── Right: desktop nav ── */
 .header-right {
   flex: 1;
-  text-align: right;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
 }
 
 .nav-links {
   display: flex;
   gap: 25px;
-  justify-content: flex-end;
   align-items: center;
 }
 
@@ -49,7 +63,7 @@
 }
 
 .light-mode .nav-links a { color: #000000; }
-.dark-mode .nav-links a  { color: #ffffff; }
+.dark-mode  .nav-links a { color: #ffffff; }
 
 .nav-links a:hover {
   color: #c57dff;
@@ -57,11 +71,9 @@
   transform: translateY(-2px);
 }
 
-.nav-links a.active {
-  color: #ffd6d6;
-}
+.nav-links a.active { color: #ffd6d6; }
 
-/* ── Hamburger button (hidden on desktop) ── */
+/* ── Hamburger: hidden on desktop ── */
 .hamburger {
   display: none;
   flex-direction: column;
@@ -69,8 +81,9 @@
   cursor: pointer;
   background: none;
   border: none;
-  padding: 5px;
+  padding: 6px;
   z-index: 1001;
+  flex-shrink: 0;
 }
 
 .hamburger span {
@@ -82,38 +95,17 @@
   transition: all 0.3s ease;
 }
 
-/* Animate hamburger → X when open */
 .hamburger.open span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
 .hamburger.open span:nth-child(2) { opacity: 0; }
 .hamburger.open span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
 
-/* ── Clickable pic ── */
-.clickable-pic {
-  cursor: pointer;
-  transition: all 0.3s ease;
+/* ── Mobile dropdown menu: hidden on desktop ── */
+.mobile-menu {
+  display: none;
 }
 
-.clickable-pic:hover {
-  transform: scale(1.05);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
-}
-
-#profile-pic {
-  pointer-events: all !important;
-  cursor: pointer !important;
-}
-
-/* ── Active link ── */
-.nav-links a.active::after {
-  width: 100%;
-  background-color: #ffd6d6;
-}
-
-/* ── Particles ── */
-.profile-wrapper {
-  position: relative;
-  display: inline-block;
-}
+/* ── Particles / explosion (unchanged) ── */
+.profile-wrapper { position: relative; display: inline-block; }
 
 .particle {
   position: absolute;
@@ -124,70 +116,138 @@
   animation: particle-fly 0.8s ease-out forwards;
   user-select: none;
   z-index: 999;
-  opacity: 1;
 }
 
 @keyframes particle-fly {
-  0%   { opacity: 1; transform: translate(0, 0) scale(1); }
-  100% { opacity: 0; transform: translate(calc(var(--x) * 1px), calc(var(--y) * 1px)) scale(0.3); }
+  0%   { opacity: 1; transform: translate(0,0) scale(1); }
+  100% { opacity: 0; transform: translate(calc(var(--x)*1px), calc(var(--y)*1px)) scale(0.3); }
 }
 
 .explosion-piece {
   position: fixed;
-  width: 22px;
-  height: 22px;
-  color: rgb(171, 28, 28);
-  font-size: 20px;
-  font-weight: bold;
+  width: 22px; height: 22px;
+  color: rgb(171,28,28);
+  font-size: 20px; font-weight: bold;
   pointer-events: none;
-  opacity: 1;
-  z-index: 9999;
+  opacity: 1; z-index: 9999;
   transition: transform 1.2s ease-out, opacity 1.2s ease-out;
 }
 
 .explosion-piece::before { content: "?"; }
 
 /* ════════════════════════════
-   MOBILE STYLES
+   MOBILE  (≤ 768px)
 ════════════════════════════ */
 @media (max-width: 768px) {
 
+  
+      
+
+  /* Header bar: profile pic LEFT, hamburger RIGHT — one row */
   .header-container {
-    max-width: 90%;
-    padding: 12px 20px;
-    flex-wrap: wrap;
-  }
-
-  /* Show hamburger, hide nav by default */
-  .hamburger { display: flex; }
-
-  .header-right {
-    width: 100%;
-    order: 3;   /* below profile pic + hamburger */
-  }
-
-  .nav-links {
-    display: none;          /* hidden until toggled */
-    flex-direction: column;
+    max-width: 88%;
+    padding: 12px 30px;
+    margin: 15px auto 20px;
+    flex-wrap: wrap;           /* allows mobile-menu to drop to next row */
     align-items: center;
-    gap: 12px;
-    padding: 15px 0;
-    width: 100%;
-    border-top: 1px solid rgba(255,255,255,0.2);
-    margin-top: 10px;
+
+    gap: 0;
   }
 
-  .nav-links.open {
-    display: flex;          /* show when hamburger clicked */
-  }
-
-  .nav-links a {
-    font-size: 1.2em;
-    padding: 5px 0;
+  /* Profile pic stays on the left — no change needed */
+  .header-left {
+    flex: 1;                   /* takes remaining space so hamburger goes to far right */
   }
 
   .profile-pic {
-    width: 55px;
-    height: 55px;
+    width: 50px;
+    height: 50px;
+  }
+
+  /* Hide desktop nav completely */
+  .header-right { display: none; }
+
+  /* Show hamburger on the right */
+  .hamburger {
+    display: flex;
+    margin-left: auto;         /* pushes to far right */
+  }
+
+  /* ── Mobile dropdown menu ── */
+  .mobile-menu {
+    display: none;             /* hidden by default */
+    flex-direction: column;
+    align-items: center;
+    width: 100%;               /* full width of the glass card */
+    padding: 10px 0 6px;
+    margin-top: 10px;
+    border-top: 1px solid rgba(255,255,255,0.2);
+    gap: 4px;
+    order: 10;                 /* always below the header row */
+  }
+
+  .mobile-menu.open {
+    display: flex;             /* revealed when hamburger clicked */
+  }
+
+  /* Mobile nav links */
+  .mobile-link {
+    text-decoration: none;
+    color: inherit;
+    font-family: 'Macondo', cursive;
+    font-size: 1.15em;
+    font-weight: 500;
+    padding: 10px 0;
+    width: 100%;
+    text-align: center;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    transition: color 0.25s ease, background 0.25s ease;
+  }
+
+  .mobile-link:last-of-type { border-bottom: none; }
+
+  .mobile-link:hover,
+  .mobile-link:active {
+    color: #c57dff;
+    background: rgba(197,125,255,0.08);
+  }
+
+  /* ── Theme row inside mobile menu ── */
+  .mobile-theme-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 10px;
+    padding-top: 10px;
+    width: 100%;
+    border-top: 1px solid rgba(255,255,255,0.15);
+  }
+
+  .mobile-theme-label {
+    font-family: 'Macondo', cursive;
+    font-size: 1em;
+    opacity: 0.8;
+  }
+
+  .mobile-theme-btn {
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 50px;
+    padding: 6px 16px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background 0.25s ease, transform 0.2s ease;
+  }
+
+  .mobile-theme-btn:hover {
+    background: rgba(255,255,255,0.3);
+    transform: scale(1.08);
+  }
+
+  /* Hide the floating theme toggle button on mobile
+     (it's now inside the hamburger menu) */
+  #theme-toggle {
+    display: none !important;
   }
 }
