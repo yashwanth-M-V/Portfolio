@@ -381,5 +381,10 @@
     padding: 4px 10px;
   }
 
+  .marker.start    { order: 1; }
+  .marker.year-2022 { order: 2; }
+  .marker.year-2023 { order: 3; }
+  .marker.today    { order: 4; }
+
   .tooltip::after { display: none; } /* remove left arrow */
 }
